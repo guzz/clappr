@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-import ClapprCore, { Loader } from '@clappr/core'
-import { Plugins, Vendor } from '@clappr/plugins'
+import ClapprCore, { Loader } from '@guzzj/clappr-core'
+import { Plugins, Vendor } from '@guzzj/clappr-plugins'
 
 const version = VERSION
 

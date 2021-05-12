@@ -1,5 +1,5 @@
 {
-  "name": "@clappr/player",
+  "name": "@guzzj/clappr-player",
   "version": "0.4.4",
   "description": "An extensible media player for the web",
   "main": "dist/clappr.js",
@@ -23,20 +23,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:clappr/clappr.git"
+    "url": "git@github.com:guzz/clappr.git"
   },
   "author": "Globo.com",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/clappr/clappr/issues"
   },
-  "homepage": "https://github.com/clappr/clappr",
+  "homepage": "https://github.com/guzz/clappr",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
-    "@clappr/core": "^0.4.18",
-    "@clappr/hlsjs-playback": "^0.5.3",
-    "@clappr/plugins": "^0.4.11",
+    "@guzzj/clappr-core": "^0.4.19",
+    "@guzzj/hlsjs-playback": "^0.5.3",
+    "@guzzj/clappr-plugins": "^0.4.11",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",

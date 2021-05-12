@@ -11,7 +11,7 @@ import size from 'rollup-plugin-sizes'
 import visualize from 'rollup-plugin-visualizer'
 import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
-import { version as clapprCoreVersion } from '@clappr/core/package.json'
+import { version as clapprCoreVersion } from '@guzzj/clappr-core/package.json'
 
 const dev = !!process.env.DEV
 const analyzeBundle = !!process.env.ANALYZE_BUNDLE

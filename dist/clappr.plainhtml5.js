@@ -1,8 +1,95 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Clappr = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@clappr/core')) :
+  typeof define === 'function' && define.amd ? define(['@clappr/core'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Clappr = factory(global.core));
+}(this, (function (core) { 'use strict';
+
+  function _defineProperty$2(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys$2(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2$2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys$2(Object(source), true).forEach(function (key) {
+          _defineProperty$2(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys$2(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
+
+  function _typeof$1(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof$1 = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof$1 = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof$1(obj);
+  }
+
+  function _classCallCheck$1(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties$1(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass$1(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties$1(Constructor, staticProps);
+    return Constructor;
+  }
 
   function _defineProperty$1(obj, key, value) {
     if (key in obj) {
@@ -45,93 +132,6 @@
         Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
       } else {
         ownKeys$1(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-    }
-
-    return target;
-  }
-
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
-  function _classCallCheck$1(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _defineProperties$1(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass$1(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties$1(Constructor, staticProps);
-    return Constructor;
-  }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-  }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(Object(source), true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(Object(source)).forEach(function (key) {
           Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
         });
       }
@@ -3489,7 +3489,7 @@
   var eventsApi = function eventsApi(obj, action, name, rest) {
     if (!name) return true; // Handle event maps.
 
-    if (_typeof(name) === 'object') {
+    if (_typeof$1(name) === 'object') {
       for (var key in name) {
         obj[action].apply(obj, [key, name[key]].concat(rest));
       }
@@ -3701,7 +3701,7 @@
         var listeningTo = this._listeningTo;
         if (!listeningTo) return this;
         var remove = !name && !callback;
-        if (!callback && _typeof(name) === 'object') callback = this;
+        if (!callback && _typeof$1(name) === 'object') callback = this;
         if (obj) (listeningTo = {})[obj._listenId] = obj;
 
         for (var id in listeningTo) {
@@ -3745,7 +3745,7 @@
       var listeningTo = this._listeningTo || (this._listeningTo = {});
       var id = obj._listenId || (obj._listenId = uniqueId('l'));
       listeningTo[id] = obj;
-      if (!callback && _typeof(name) === 'object') callback = this;
+      if (!callback && _typeof$1(name) === 'object') callback = this;
       obj[listenMethods[method]](name, callback, this);
       return this;
     };
@@ -4001,6 +4001,33 @@
    */
 
   Events.PLAYBACK_LEVEL_SWITCH_END = 'playback:levels:switch:end';
+  /**
+   * Fired when the playback has its audio tracks
+   *
+   * @event PLAYBACK_AUDIO_TRACKS_AVAILABLE
+   * @param {Array} audioTracks
+   * the ordered audio tracks
+   * @param {Number} initial
+   * the initial audio track otherwise -1 (AUTO)
+   */
+
+  Events.PLAYBACK_AUDIO_TRACKS_AVAILABLE = 'playback:audiotrack:available';
+  /**
+   * Fired when the playback starts to switch audio track
+   *
+   * @event PLAYBACK_AUDIO_TRACK_SWITCH_START
+   *
+   */
+
+  Events.PLAYBACK_AUDIO_TRACK_SWITCH_START = 'playback:audiotrack:switch:start';
+  /**
+   * Fired when the playback ends the audio track switch
+   *
+   * @event PLAYBACK_AUDIO_TRACK_SWITCH_END
+   *
+   */
+
+  Events.PLAYBACK_AUDIO_TRACK_SWITCH_END = 'playback:audiotrack:switch:end';
   /**
    * Fired when playback internal state changes
    *
@@ -6106,7 +6133,7 @@
         var resolvedSource = null;
         var mimeType = this.options.mimeType;
 
-        if (_typeof(source) === 'object') {
+        if (_typeof$1(source) === 'object') {
           resolvedSource = source.source.toString();
           if (source.mimeType) mimeType = source.mimeType;
         } else {
@@ -6115,7 +6142,7 @@
 
         if (resolvedSource.match(/^\/\//)) resolvedSource = window.location.protocol + resolvedSource;
 
-        var options = _objectSpread2(_objectSpread2({}, this.options), {}, {
+        var options = _objectSpread2$1(_objectSpread2$1({}, this.options), {}, {
           src: resolvedSource,
           mimeType: mimeType
         });
@@ -6123,7 +6150,7 @@
         var playbackPlugin = this.findPlaybackPlugin(resolvedSource, mimeType); // Fallback to empty playback object until we sort out unsupported sources error without NoOp playback
 
         var playback = playbackPlugin ? new playbackPlugin(options, this._i18n, this.playerError) : new Playback();
-        options = _objectSpread2(_objectSpread2({}, options), {}, {
+        options = _objectSpread2$1(_objectSpread2$1({}, options), {}, {
           playback: playback
         });
         var container = new Container(options, this._i18n, this.playerError);
@@ -9286,6 +9313,22 @@
     $: zepto
   };
 
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -9306,6 +9349,55 @@
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
     if (staticProps) _defineProperties(Constructor, staticProps);
     return Constructor;
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
   }
 
   function _inherits(subClass, superClass) {
@@ -9431,7 +9523,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }]);
@@ -9445,20 +9537,20 @@
     _createClass(ClickToPausePlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, Events.CONTAINER_CLICK, this.click);
-        this.listenTo(this.container, Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
+        this.listenTo(this.container, core.Events.CONTAINER_CLICK, this.click);
+        this.listenTo(this.container, core.Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
       }
     }, {
       key: "click",
       value: function click() {
-        if (this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrEnabled()) {
+        if (this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrEnabled()) {
           if (this.container.isPlaying()) this.container.pause();else this.container.play();
         }
       }
     }, {
       key: "settingsUpdate",
       value: function settingsUpdate() {
-        var pointerEnabled = this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrEnabled();
+        var pointerEnabled = this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrEnabled();
         if (pointerEnabled === this.pointerEnabled) return;
         var method = pointerEnabled ? 'addClass' : 'removeClass';
         this.container.$el[method]('pointer-enabled');
@@ -9467,7 +9559,7 @@
     }]);
 
     return ClickToPausePlugin;
-  }(ContainerPlugin);
+  }(core.ContainerPlugin);
 
   var ccIcon = "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t viewBox=\"0 0 49 41.8\" style=\"enable-background:new 0 0 49 41.8;\" xml:space=\"preserve\">\n<path d=\"M47.1,0H3.2C1.6,0,0,1.2,0,2.8v31.5C0,35.9,1.6,37,3.2,37h11.9l3.2,1.9l4.7,2.7c0.9,0.5,2-0.1,2-1.1V37h22.1\n\tc1.6,0,1.9-1.1,1.9-2.7V2.8C49,1.2,48.7,0,47.1,0z M7.2,18.6c0-4.8,3.5-9.3,9.9-9.3c4.8,0,7.1,2.7,7.1,2.7l-2.5,4\n\tc0,0-1.7-1.7-4.2-1.7c-2.8,0-4.3,2.1-4.3,4.3c0,2.1,1.5,4.4,4.5,4.4c2.5,0,4.9-2.1,4.9-2.1l2.2,4.2c0,0-2.7,2.9-7.6,2.9\n\tC10.8,27.9,7.2,23.5,7.2,18.6z M36.9,27.9c-6.4,0-9.9-4.4-9.9-9.3c0-4.8,3.5-9.3,9.9-9.3C41.7,9.3,44,12,44,12l-2.5,4\n\tc0,0-1.7-1.7-4.2-1.7c-2.8,0-4.3,2.1-4.3,4.3c0,2.1,1.5,4.4,4.5,4.4c2.5,0,4.9-2.1,4.9-2.1l2.2,4.2C44.5,25,41.9,27.9,36.9,27.9z\"/>\n</svg>";
 
@@ -9517,13 +9609,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "template",
       get: function get() {
-        return tmpl(ccHTML);
+        return core.template(ccHTML);
       }
     }, {
       key: "events",
@@ -9561,9 +9653,9 @@
     _createClass(ClosedCaptions, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
-        this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
-        this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_HIDE, this.hideContextMenu);
+        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.render);
+        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_HIDE, this.hideContextMenu);
         this.bindContainerEvents();
       }
     }, {
@@ -9572,9 +9664,9 @@
         this.container = this.core.activeContainer;
 
         if (this.container) {
-          this.listenTo(this.container, Events.CONTAINER_SUBTITLE_AVAILABLE, this.onSubtitleAvailable);
-          this.listenTo(this.container, Events.CONTAINER_SUBTITLE_CHANGED, this.onSubtitleChanged);
-          this.listenTo(this.container, Events.CONTAINER_STOP, this.onContainerStop);
+          this.listenTo(this.container, core.Events.CONTAINER_SUBTITLE_AVAILABLE, this.onSubtitleAvailable);
+          this.listenTo(this.container, core.Events.CONTAINER_SUBTITLE_CHANGED, this.onSubtitleChanged);
+          this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onContainerStop);
         }
       }
     }, {
@@ -9671,7 +9763,7 @@
     }]);
 
     return ClosedCaptions;
-  }(UICorePlugin);
+  }(core.UICorePlugin);
 
   var dvrHTML = "<div class=\"live-info\"><%= live %></div>\n<button type=\"button\" class=\"live-button\" aria-label=\"<%= backToLive %>\"><%= backToLive %></button>\n";
 
@@ -9686,7 +9778,7 @@
     _createClass(DVRControls, [{
       key: "template",
       get: function get() {
-        return tmpl(dvrHTML);
+        return core.template(dvrHTML);
       }
     }, {
       key: "name",
@@ -9697,7 +9789,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
@@ -9741,9 +9833,9 @@
         var _this2 = this;
 
         if (this.core.mediaControl.settings) {
-          this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.containerChanged);
-          this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.settingsUpdate);
-          this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.render);
+          this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this.containerChanged);
+          this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.settingsUpdate);
+          this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.render);
         } else {
           setTimeout(function () {
             return _this2.bindCoreEvents();
@@ -9754,8 +9846,8 @@
       key: "bindContainerEvents",
       value: function bindContainerEvents() {
         if (this.core.activeContainer) {
-          this.listenToOnce(this.core.activeContainer, Events.CONTAINER_TIMEUPDATE, this.render);
-          this.listenTo(this.core.activeContainer, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.dvrChanged);
+          this.listenToOnce(this.core.activeContainer, core.Events.CONTAINER_TIMEUPDATE, this.render);
+          this.listenTo(this.core.activeContainer, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.dvrChanged);
         }
       }
     }, {
@@ -9767,7 +9859,7 @@
     }, {
       key: "dvrChanged",
       value: function dvrChanged(dvrEnabled) {
-        if (this.core.getPlaybackType() !== Playback.LIVE) return;
+        if (this.core.getPlaybackType() !== core.Playback.LIVE) return;
         this.settingsUpdate();
         this.core.mediaControl.$el.addClass('live');
 
@@ -9807,7 +9899,7 @@
       key: "shouldRender",
       value: function shouldRender() {
         var useDvrControls = this.core.options.useDvrControls === undefined || !!this.core.options.useDvrControls;
-        return useDvrControls && this.core.getPlaybackType() === Playback.LIVE;
+        return useDvrControls && this.core.getPlaybackType() === core.Playback.LIVE;
       }
     }, {
       key: "render",
@@ -9827,7 +9919,7 @@
     }]);
 
     return DVRControls;
-  }(UICorePlugin);
+  }(core.UICorePlugin);
 
   var EndVideo$1 = /*#__PURE__*/function (_CorePlugin) {
     _inherits(EndVideo, _CorePlugin);
@@ -9843,12 +9935,12 @@
     _createClass(EndVideo, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
         var container = this.core.activeContainer;
 
         if (container) {
-          this.listenTo(container, Events.CONTAINER_ENDED, this.ended);
-          this.listenTo(container, Events.CONTAINER_STOP, this.ended);
+          this.listenTo(container, core.Events.CONTAINER_ENDED, this.ended);
+          this.listenTo(container, core.Events.CONTAINER_STOP, this.ended);
         }
       }
     }, {
@@ -9872,13 +9964,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }]);
 
     return EndVideo;
-  }(CorePlugin);
+  }(core.CorePlugin);
 
   var reloadIcon = "<svg fill=\"#FFFFFF\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/>\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n</svg>";
 
@@ -9901,13 +9993,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "template",
       get: function get() {
-        return tmpl(templateHtml);
+        return core.template(templateHtml);
       }
     }, {
       key: "container",
@@ -9937,8 +10029,8 @@
     _createClass(ErrorScreen, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, Events.ERROR, this.onError);
-        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onContainerChanged);
+        this.listenTo(this.core, core.Events.ERROR, this.onError);
+        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onContainerChanged);
       }
     }, {
       key: "bindReload",
@@ -9951,7 +10043,7 @@
       value: function reload() {
         var _this2 = this;
 
-        this.listenToOnce(this.core, Events.CORE_READY, function () {
+        this.listenToOnce(this.core, core.Events.CORE_READY, function () {
           return _this2.container.play();
         });
         this.core.load(this.options.sources, this.options.mimeType);
@@ -9974,7 +10066,7 @@
       value: function onError() {
         var err = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-        if (err.level === PlayerError.Levels.FATAL) {
+        if (err.level === core.PlayerError.Levels.FATAL) {
           this.err = err;
           this.container.disableMediaControl();
           this.container.stop();
@@ -10010,13 +10102,13 @@
     }]);
 
     return ErrorScreen;
-  }(UICorePlugin);
+  }(core.UICorePlugin);
 
   var playIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M1.425.35L14.575 8l-13.15 7.65V.35z\"/>\n</svg>";
 
   var pauseIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 14.76H6.43V1.24H1.71v13.52zm7.86-13.52v13.52h4.716V1.24H9.573z\"/>\n</svg>";
 
-  var oldIcon = zepto('link[rel="shortcut icon"]');
+  var oldIcon = core.$('link[rel="shortcut icon"]');
 
   var Favicon$1 = /*#__PURE__*/function (_CorePlugin) {
     _inherits(Favicon, _CorePlugin);
@@ -10032,7 +10124,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
@@ -10060,19 +10152,19 @@
       value: function configure() {
         if (this.core.options.changeFavicon) {
           if (!this.enabled) {
-            this.stopListening(this.core, Events.CORE_OPTIONS_CHANGE);
+            this.stopListening(this.core, core.Events.CORE_OPTIONS_CHANGE);
             this.enable();
           }
         } else if (this.enabled) {
           this.disable();
-          this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
+          this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
         }
       }
     }, {
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
-        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
         this.core.activeContainer && this.containerChanged();
       }
     }, {
@@ -10080,11 +10172,11 @@
       value: function containerChanged() {
         this._container && this.stopListening(this._container);
         this._container = this.core.activeContainer;
-        this.listenTo(this._container, Events.CONTAINER_PLAY, this.setPlayIcon);
-        this.listenTo(this._container, Events.CONTAINER_PAUSE, this.setPauseIcon);
-        this.listenTo(this._container, Events.CONTAINER_STOP, this.resetIcon);
-        this.listenTo(this._container, Events.CONTAINER_ENDED, this.resetIcon);
-        this.listenTo(this._container, Events.CONTAINER_ERROR, this.resetIcon);
+        this.listenTo(this._container, core.Events.CONTAINER_PLAY, this.setPlayIcon);
+        this.listenTo(this._container, core.Events.CONTAINER_PAUSE, this.setPauseIcon);
+        this.listenTo(this._container, core.Events.CONTAINER_STOP, this.resetIcon);
+        this.listenTo(this._container, core.Events.CONTAINER_ENDED, this.resetIcon);
+        this.listenTo(this._container, core.Events.CONTAINER_ERROR, this.resetIcon);
         this.resetIcon();
       }
     }, {
@@ -10104,15 +10196,15 @@
     }, {
       key: "createIcon",
       value: function createIcon(svg) {
-        var canvas = zepto('<canvas/>');
+        var canvas = core.$('<canvas/>');
         canvas[0].width = 16;
         canvas[0].height = 16;
         var ctx = canvas[0].getContext('2d');
         ctx.fillStyle = '#000';
-        var d = zepto(svg).find('path').attr('d');
+        var d = core.$(svg).find('path').attr('d');
         var path = new Path2D(d);
         ctx.fill(path);
-        var icon = zepto('<link rel="shortcut icon" type="image/png"/>');
+        var icon = core.$('<link rel="shortcut icon" type="image/png"/>');
         icon.attr('href', canvas[0].toDataURL('image/png'));
         return icon;
       }
@@ -10131,21 +10223,21 @@
     }, {
       key: "resetIcon",
       value: function resetIcon() {
-        zepto('link[rel="shortcut icon"]').remove();
-        zepto('head').append(this.oldIcon);
+        core.$('link[rel="shortcut icon"]').remove();
+        core.$('head').append(this.oldIcon);
       }
     }, {
       key: "changeIcon",
       value: function changeIcon(icon) {
         if (icon) {
-          zepto('link[rel="shortcut icon"]').remove();
-          zepto('head').append(icon);
+          core.$('link[rel="shortcut icon"]').remove();
+          core.$('head').append(icon);
         }
       }
     }]);
 
     return Favicon;
-  }(CorePlugin);
+  }(core.CorePlugin);
 
   var GoogleAnalytics$1 = /*#__PURE__*/function (_ContainerPlugin) {
     _inherits(GoogleAnalytics, _ContainerPlugin);
@@ -10161,7 +10253,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }]);
@@ -10211,24 +10303,24 @@
         var _this3 = this;
 
         if (this.container) {
-          this.listenTo(this.container, Events.CONTAINER_READY, this.onReady);
-          this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
-          this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
-          this.listenTo(this.container, Events.CONTAINER_PAUSE, this.onPause);
-          this.listenTo(this.container, Events.CONTAINER_ENDED, this.onEnded);
-          this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
-          this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
-          this.listenTo(this.container, Events.CONTAINER_ERROR, this.onError);
-          this.listenTo(this.container, Events.CONTAINER_PLAYBACKSTATE, this.onPlaybackChanged);
-          this.listenTo(this.container, Events.CONTAINER_VOLUME, function (event) {
+          this.listenTo(this.container, core.Events.CONTAINER_READY, this.onReady);
+          this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
+          this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
+          this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.onPause);
+          this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onEnded);
+          this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
+          this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
+          this.listenTo(this.container, core.Events.CONTAINER_ERROR, this.onError);
+          this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKSTATE, this.onPlaybackChanged);
+          this.listenTo(this.container, core.Events.CONTAINER_VOLUME, function (event) {
             return _this3.onVolumeChanged(event);
           });
-          this.listenTo(this.container, Events.CONTAINER_SEEK, function (event) {
+          this.listenTo(this.container, core.Events.CONTAINER_SEEK, function (event) {
             return _this3.onSeek(event);
           });
-          this.listenTo(this.container, Events.CONTAINER_FULL_SCREEN, this.onFullscreen);
-          this.listenTo(this.container, Events.CONTAINER_HIGHDEFINITIONUPDATE, this.onHD);
-          this.listenTo(this.container, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.onDVR);
+          this.listenTo(this.container, core.Events.CONTAINER_FULL_SCREEN, this.onFullscreen);
+          this.listenTo(this.container, core.Events.CONTAINER_HIGHDEFINITIONUPDATE, this.onHD);
+          this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.onDVR);
         }
 
         _gaq.push([this.trackerName + '_setAccount', this.account]);
@@ -10321,7 +10413,7 @@
     }]);
 
     return GoogleAnalytics;
-  }(ContainerPlugin);
+  }(core.ContainerPlugin);
 
   /* eslint-disable */
   // Kibo is released under the MIT License. Copyright (c) 2013 marquete.
@@ -10694,11 +10786,11 @@
 
   var hdIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M5.375 7.062H2.637V4.26H.502v7.488h2.135V8.9h2.738v2.848h2.133V4.26H5.375v2.802zm5.97-2.81h-2.84v7.496h2.798c2.65 0 4.195-1.607 4.195-3.77v-.022c0-2.162-1.523-3.704-4.154-3.704zm2.06 3.758c0 1.21-.81 1.896-2.03 1.896h-.83V6.093h.83c1.22 0 2.03.696 2.03 1.896v.02z\"/>\n</svg>";
 
-  var Config = Utils.Config,
-      Fullscreen = Utils.Fullscreen,
-      formatTime = Utils.formatTime,
-      extend = Utils.extend,
-      removeArrayItem = Utils.removeArrayItem;
+  var Config = core.Utils.Config,
+      Fullscreen = core.Utils.Fullscreen,
+      formatTime = core.Utils.formatTime,
+      extend = core.Utils.extend,
+      removeArrayItem = core.Utils.removeArrayItem;
 
   var MediaControl$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(MediaControl, _UICorePlugin);
@@ -10714,13 +10806,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "disabled",
       get: function get() {
-        var playbackIsNOOP = this.container && this.container.getPlaybackType() === Playback.NO_OP;
+        var playbackIsNOOP = this.container && this.container.getPlaybackType() === core.Playback.NO_OP;
         return this.userDisabled || playbackIsNOOP;
       }
     }, {
@@ -10768,7 +10860,7 @@
     }, {
       key: "template",
       get: function get() {
-        return tmpl(mediaControlHTML);
+        return core.template(mediaControlHTML);
       }
     }, {
       key: "volume",
@@ -10782,12 +10874,12 @@
       }
     }]);
 
-    function MediaControl(core) {
+    function MediaControl(core$1) {
       var _this;
 
       _classCallCheck(this, MediaControl);
 
-      _this = _super.call(this, core);
+      _this = _super.call(this, core$1);
       _this.persistConfig = _this.options.persistConfig;
       _this.currentPositionValue = null;
       _this.currentDurationValue = null;
@@ -10806,7 +10898,7 @@
       _this.bindKeyEvents();
 
       if (_this.container) {
-        if (!zepto.isEmptyObject(_this.container.settings)) _this.settings = zepto.extend({}, _this.container.settings);
+        if (!core.$.isEmptyObject(_this.container.settings)) _this.settings = core.$.extend({}, _this.container.settings);
       } else {
         _this.settings = {};
       }
@@ -10822,8 +10914,8 @@
         return _this.updateDrag(event);
       };
 
-      zepto(document).bind('mouseup', _this.stopDragHandler);
-      zepto(document).bind('mousemove', _this.updateDragHandler);
+      core.$(document).bind('mouseup', _this.stopDragHandler);
+      core.$(document).bind('mousemove', _this.updateDragHandler);
       return _this;
     }
 
@@ -10845,38 +10937,38 @@
         var _this3 = this;
 
         this.stopListening();
-        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onActiveContainerChanged);
-        this.listenTo(this.core, Events.CORE_MOUSE_MOVE, this.show);
-        this.listenTo(this.core, Events.CORE_MOUSE_LEAVE, function () {
+        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onActiveContainerChanged);
+        this.listenTo(this.core, core.Events.CORE_MOUSE_MOVE, this.show);
+        this.listenTo(this.core, core.Events.CORE_MOUSE_LEAVE, function () {
           return _this3.hide(_this3.options.hideMediaControlDelay);
         });
-        this.listenTo(this.core, Events.CORE_FULLSCREEN, this.show);
-        this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
-        this.listenTo(this.core, Events.CORE_RESIZE, this.playerResize);
+        this.listenTo(this.core, core.Events.CORE_FULLSCREEN, this.show);
+        this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.core, core.Events.CORE_RESIZE, this.playerResize);
         this.bindContainerEvents();
       }
     }, {
       key: "bindContainerEvents",
       value: function bindContainerEvents() {
         if (!this.container) return;
-        this.listenTo(this.container, Events.CONTAINER_PLAY, this.changeTogglePlay);
-        this.listenTo(this.container, Events.CONTAINER_PAUSE, this.changeTogglePlay);
-        this.listenTo(this.container, Events.CONTAINER_STOP, this.changeTogglePlay);
-        this.listenTo(this.container, Events.CONTAINER_DBLCLICK, this.toggleFullscreen);
-        this.listenTo(this.container, Events.CONTAINER_TIMEUPDATE, this.onTimeUpdate);
-        this.listenTo(this.container, Events.CONTAINER_PROGRESS, this.updateProgressBar);
-        this.listenTo(this.container, Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
-        this.listenTo(this.container, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.settingsUpdate);
-        this.listenTo(this.container, Events.CONTAINER_HIGHDEFINITIONUPDATE, this.highDefinitionUpdate);
-        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_DISABLE, this.disable);
-        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_ENABLE, this.enable);
-        this.listenTo(this.container, Events.CONTAINER_ENDED, this.ended);
-        this.listenTo(this.container, Events.CONTAINER_VOLUME, this.onVolumeChanged);
-        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.setInitialVolume);
+        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.changeTogglePlay);
+        this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.changeTogglePlay);
+        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.changeTogglePlay);
+        this.listenTo(this.container, core.Events.CONTAINER_DBLCLICK, this.toggleFullscreen);
+        this.listenTo(this.container, core.Events.CONTAINER_TIMEUPDATE, this.onTimeUpdate);
+        this.listenTo(this.container, core.Events.CONTAINER_PROGRESS, this.updateProgressBar);
+        this.listenTo(this.container, core.Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
+        this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.settingsUpdate);
+        this.listenTo(this.container, core.Events.CONTAINER_HIGHDEFINITIONUPDATE, this.highDefinitionUpdate);
+        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_DISABLE, this.disable);
+        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_ENABLE, this.enable);
+        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.ended);
+        this.listenTo(this.container, core.Events.CONTAINER_VOLUME, this.onVolumeChanged);
+        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.setInitialVolume);
 
         if (this.container.playback.el.nodeName.toLowerCase() === 'video') {
           // wait until the metadata has loaded and then check if fullscreen on video tag is supported
-          this.listenToOnce(this.container, Events.CONTAINER_LOADEDMETADATA, this.onLoadedMetadataOnVideoTag);
+          this.listenToOnce(this.container, core.Events.CONTAINER_LOADEDMETADATA, this.onLoadedMetadataOnVideoTag);
         }
       }
     }, {
@@ -10975,12 +11067,12 @@
         if (this.container && this.container.isPlaying()) {
           this.$playPauseToggle.append(pauseIcon);
           this.$playStopToggle.append(stopIcon);
-          this.trigger(Events.MEDIACONTROL_PLAYING);
+          this.trigger(core.Events.MEDIACONTROL_PLAYING);
         } else {
           this.$playPauseToggle.append(playIcon);
           this.$playStopToggle.append(playIcon);
-          this.trigger(Events.MEDIACONTROL_NOTPLAYING);
-          Browser.isMobile && this.show();
+          this.trigger(core.Events.MEDIACONTROL_NOTPLAYING);
+          core.Browser.isMobile && this.show();
         }
 
         this.applyButtonStyle(this.$playPauseToggle);
@@ -10996,12 +11088,12 @@
           });
         }
 
-        this.trigger(Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
+        this.trigger(core.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
       }
     }, {
       key: "mouseleaveOnSeekBar",
       value: function mouseleaveOnSeekBar(event) {
-        this.trigger(Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, event);
+        this.trigger(core.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, event);
       }
     }, {
       key: "onVolumeClick",
@@ -11106,20 +11198,20 @@
           if (_this4.container && _this4.container.isReady) {
             _this4.container.setVolume(value);
           } else {
-            _this4.listenToOnce(_this4.container, Events.CONTAINER_READY, function () {
+            _this4.listenToOnce(_this4.container, core.Events.CONTAINER_READY, function () {
               _this4.container.setVolume(value);
             });
           }
         };
 
-        if (!this.container) this.listenToOnce(this, Events.MEDIACONTROL_CONTAINERCHANGED, function () {
+        if (!this.container) this.listenToOnce(this, core.Events.MEDIACONTROL_CONTAINERCHANGED, function () {
           return setWhenContainerReady();
         });else setWhenContainerReady();
       }
     }, {
       key: "toggleFullscreen",
       value: function toggleFullscreen() {
-        this.trigger(Events.MEDIACONTROL_FULLSCREEN, this.name);
+        this.trigger(core.Events.MEDIACONTROL_FULLSCREEN, this.name);
         this.container.fullscreen();
         this.core.toggleFullscreen();
         this.resetUserKeepVisible();
@@ -11134,9 +11226,9 @@
         this.changeTogglePlay();
         this.bindContainerEvents();
         this.settingsUpdate();
-        this.container && this.container.trigger(Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.container.isDvrInUse());
+        this.container && this.container.trigger(core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.container.isDvrInUse());
         this.container && this.container.mediaControlDisabled && this.disable();
-        this.trigger(Events.MEDIACONTROL_CONTAINERCHANGED);
+        this.trigger(core.Events.MEDIACONTROL_CONTAINERCHANGED);
       }
     }, {
       key: "showVolumeBar",
@@ -11195,7 +11287,7 @@
         if (this.currentPositionValue === null || this.currentDurationValue === null) return; // default to 100%
 
         this.currentSeekBarPercentage = 100;
-        if (this.container && (this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrInUse())) this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
+        if (this.container && (this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrInUse())) this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
         this.setSeekPercentage(this.currentSeekBarPercentage);
         var newPosition = formatTime(this.currentPositionValue);
         var newDuration = formatTime(this.currentDurationValue);
@@ -11258,8 +11350,8 @@
         if (!event || mousePointerMoved || navigator.userAgent.match(/firefox/i)) {
           clearTimeout(this.hideId);
           this.$el.show();
-          this.trigger(Events.MEDIACONTROL_SHOW, this.name);
-          this.container && this.container.trigger(Events.CONTAINER_MEDIACONTROL_SHOW, this.name);
+          this.trigger(core.Events.MEDIACONTROL_SHOW, this.name);
+          this.container && this.container.trigger(core.Events.CONTAINER_MEDIACONTROL_SHOW, this.name);
           this.$el.removeClass('media-control-hide');
           this.hideId = setTimeout(function () {
             return _this6.hide();
@@ -11292,8 +11384,8 @@
             return _this7.hide();
           }, timeout);
         } else {
-          this.trigger(Events.MEDIACONTROL_HIDE, this.name);
-          this.container && this.container.trigger(Events.CONTAINER_MEDIACONTROL_HIDE, this.name);
+          this.trigger(core.Events.MEDIACONTROL_HIDE, this.name);
+          this.container && this.container.trigger(core.Events.CONTAINER_MEDIACONTROL_HIDE, this.name);
           this.$el.addClass('media-control-hide');
           this.hideVolumeBar(0);
           var showing = false;
@@ -11327,7 +11419,7 @@
     }, {
       key: "getSettings",
       value: function getSettings() {
-        return zepto.extend(true, {}, this.container && this.container.settings);
+        return core.$.extend(true, {}, this.container && this.container.settings);
       }
     }, {
       key: "highDefinitionUpdate",
@@ -11421,7 +11513,7 @@
       value: function bindKeyEvents() {
         var _this9 = this;
 
-        if (Browser.isMobile || this.options.disableKeyboardShortcuts) return;
+        if (core.Browser.isMobile || this.options.disableKeyboardShortcuts) return;
         this.unbindKeyEvents();
         this.kibo = new Kibo(this.options.focusElement || this.options.parentElement);
         this.bindKeyAndShow('space', function () {
@@ -11480,13 +11572,13 @@
     }, {
       key: "applyButtonStyle",
       value: function applyButtonStyle(element) {
-        this.buttonsColor && element && zepto(element).find('svg path').css('fill', this.buttonsColor);
+        this.buttonsColor && element && core.$(element).find('svg path').css('fill', this.buttonsColor);
       }
     }, {
       key: "destroy",
       value: function destroy() {
-        zepto(document).unbind('mouseup', this.stopDragHandler);
-        zepto(document).unbind('mousemove', this.updateDragHandler);
+        core.$(document).unbind('mouseup', this.stopDragHandler);
+        core.$(document).unbind('mousemove', this.updateDragHandler);
         this.unbindKeyEvents();
         this.stopListening();
 
@@ -11503,7 +11595,7 @@
       value: function configure(options) {
         // Check if chromeless mode or if configure is called with new source(s)
         if (this.options.chromeless || options.source || options.sources) this.disable();else this.enable();
-        this.trigger(Events.MEDIACONTROL_OPTIONS_CHANGE);
+        this.trigger(core.Events.MEDIACONTROL_OPTIONS_CHANGE);
       }
     }, {
       key: "render",
@@ -11528,8 +11620,8 @@
         // Display mute/unmute icon only if Safari version >= 10
 
 
-        if (Browser.isSafari && Browser.isMobile) {
-          if (Browser.version < 10) this.$volumeContainer.css('display', 'none');else this.$volumeBarContainer.css('display', 'none');
+        if (core.Browser.isSafari && core.Browser.isMobile) {
+          if (core.Browser.version < 10) this.$volumeContainer.css('display', 'none');else this.$volumeBarContainer.css('display', 'none');
         }
 
         this.$seekBarPosition.addClass('media-control-notransition');
@@ -11540,7 +11632,7 @@
         this.setSeekPercentage(previousSeekPercentage);
         setTimeout(function () {
           !_this10.settings.seekEnabled && _this10.$seekBarContainer.addClass('seek-disabled');
-          !Browser.isMobile && !_this10.options.disableKeyboardShortcuts && _this10.bindKeyEvents();
+          !core.Browser.isMobile && !_this10.options.disableKeyboardShortcuts && _this10.bindKeyEvents();
 
           _this10.playerResize({
             width: _this10.options.width,
@@ -11554,13 +11646,13 @@
         this.core.$el.append(this.el);
         this.rendered = true;
         this.updateVolumeUI();
-        this.trigger(Events.MEDIACONTROL_RENDERED);
+        this.trigger(core.Events.MEDIACONTROL_RENDERED);
         return this;
       }
     }]);
 
     return MediaControl;
-  }(UICorePlugin);
+  }(core.UICorePlugin);
 
   MediaControl$1.extend = function (properties) {
     return extend(MediaControl$1, properties);
@@ -11585,19 +11677,19 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "template",
       get: function get() {
-        return tmpl(posterHTML);
+        return core.template(posterHTML);
       }
     }, {
       key: "shouldRender",
       get: function get() {
         var showForNoOp = !!(this.options.poster && this.options.poster.showForNoOp);
-        return this.container.playback.name !== 'html_img' && (this.container.playback.getPlaybackType() !== Playback.NO_OP || showForNoOp);
+        return this.container.playback.name !== 'html_img' && (this.container.playback.getPlaybackType() !== core.Playback.NO_OP || showForNoOp);
       }
     }, {
       key: "attributes",
@@ -11641,18 +11733,18 @@
     _createClass(PosterPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
-        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.update);
-        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.update);
-        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.render);
-        this.listenTo(this.container, Events.CONTAINER_ERROR, this.onError);
-        this.showOnVideoEnd && this.listenTo(this.container, Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
+        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.update);
+        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.update);
+        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.render);
+        this.listenTo(this.container, core.Events.CONTAINER_ERROR, this.onError);
+        this.showOnVideoEnd && this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
       }
     }, {
       key: "onError",
       value: function onError(error) {
-        this.hasFatalError = error.level === PlayerError.Levels.FATAL;
+        this.hasFatalError = error.level === core.PlayerError.Levels.FATAL;
 
         if (this.hasFatalError) {
           this.hasStartedPlaying = false;
@@ -11749,10 +11841,12 @@
           this.$el.css({
             'background-image': 'url(' + posterUrl + ')'
           });
+          this.removeVideoElementPoster();
         } else if (this.options.poster) {
           this.$el.css({
             'background': this.options.poster.custom
           });
+          this.removeVideoElementPoster();
         }
 
         this.container.$el.append(this.el);
@@ -11772,17 +11866,22 @@
         this.update();
         return this;
       }
+    }, {
+      key: "removeVideoElementPoster",
+      value: function removeVideoElementPoster() {
+        this.container.playback && this.container.playback.$el && this.container.playback.$el[0] && this.container.playback.$el[0].removeAttribute && this.container.playback.$el[0].removeAttribute('poster');
+      }
     }]);
 
     return PosterPlugin;
-  }(UIContainerPlugin);
+  }(core.UIContainerPlugin);
 
   var seekTimeHTML = "<span data-seek-time></span>\n<span data-duration></span>\n";
 
   var css_248z$5 = ".seek-time[data-seek-time] {\n  position: absolute;\n  white-space: nowrap;\n  height: 20px;\n  line-height: 20px;\n  font-size: 0;\n  left: -100%;\n  bottom: 55px;\n  background-color: rgba(2, 2, 2, 0.5);\n  z-index: 9999;\n  transition: opacity 0.1s ease; }\n  .seek-time[data-seek-time].hidden[data-seek-time] {\n    opacity: 0; }\n  .seek-time[data-seek-time] [data-seek-time] {\n    display: inline-block;\n    color: white;\n    font-size: 10px;\n    padding-left: 7px;\n    padding-right: 7px;\n    vertical-align: top; }\n  .seek-time[data-seek-time] [data-duration] {\n    display: inline-block;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 10px;\n    padding-right: 7px;\n    vertical-align: top; }\n    .seek-time[data-seek-time] [data-duration]:before {\n      content: \"|\";\n      margin-right: 7px; }\n";
   styleInject(css_248z$5);
 
-  var formatTime$1 = Utils.formatTime;
+  var formatTime$1 = core.Utils.formatTime;
 
   var SeekTime$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(SeekTime, _UICorePlugin);
@@ -11798,13 +11897,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "template",
       get: function get() {
-        return tmpl(seekTimeHTML);
+        return core.template(seekTimeHTML);
       }
     }, {
       key: "attributes",
@@ -11827,7 +11926,7 @@
     }, {
       key: "isLiveStreamWithDvr",
       get: function get() {
-        return this.mediaControlContainer && this.mediaControlContainer.getPlaybackType() === Playback.LIVE && this.mediaControlContainer.isDvrEnabled();
+        return this.mediaControlContainer && this.mediaControlContainer.getPlaybackType() === core.Playback.LIVE && this.mediaControlContainer.isDvrEnabled();
       }
     }, {
       key: "durationShown",
@@ -11863,14 +11962,14 @@
     _createClass(SeekTime, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
-        this.listenTo(this.mediaControl, Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this.showTime);
-        this.listenTo(this.mediaControl, Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this.hideTime);
-        this.listenTo(this.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.onContainerChanged);
+        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.render);
+        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this.showTime);
+        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this.hideTime);
+        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this.onContainerChanged);
 
         if (this.mediaControlContainer) {
-          this.listenTo(this.mediaControlContainer, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.update);
-          this.listenTo(this.mediaControlContainer, Events.CONTAINER_TIMEUPDATE, this.updateDuration);
+          this.listenTo(this.mediaControlContainer, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.update);
+          this.listenTo(this.mediaControlContainer, core.Events.CONTAINER_TIMEUPDATE, this.updateDuration);
         }
       }
     }, {
@@ -11998,7 +12097,7 @@
     }]);
 
     return SeekTime;
-  }(UICorePlugin);
+  }(core.UICorePlugin);
 
   var spinnerHTML = "<div data-bounce1></div><div data-bounce2></div><div data-bounce3></div>\n";
 
@@ -12019,7 +12118,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
@@ -12038,18 +12137,18 @@
       _classCallCheck(this, SpinnerThreeBouncePlugin);
 
       _this = _super.call(this, container);
-      _this.template = tmpl(spinnerHTML);
+      _this.template = core.template(spinnerHTML);
       _this.showTimeout = null;
 
-      _this.listenTo(_this.container, Events.CONTAINER_STATE_BUFFERING, _this.onBuffering);
+      _this.listenTo(_this.container, core.Events.CONTAINER_STATE_BUFFERING, _this.onBuffering);
 
-      _this.listenTo(_this.container, Events.CONTAINER_STATE_BUFFERFULL, _this.onBufferFull);
+      _this.listenTo(_this.container, core.Events.CONTAINER_STATE_BUFFERFULL, _this.onBufferFull);
 
-      _this.listenTo(_this.container, Events.CONTAINER_STOP, _this.onStop);
+      _this.listenTo(_this.container, core.Events.CONTAINER_STOP, _this.onStop);
 
-      _this.listenTo(_this.container, Events.CONTAINER_ENDED, _this.onStop);
+      _this.listenTo(_this.container, core.Events.CONTAINER_ENDED, _this.onStop);
 
-      _this.listenTo(_this.container, Events.CONTAINER_ERROR, _this.onStop);
+      _this.listenTo(_this.container, core.Events.CONTAINER_ERROR, _this.onStop);
 
       _this.render();
 
@@ -12102,7 +12201,7 @@
     }]);
 
     return SpinnerThreeBouncePlugin;
-  }(UIContainerPlugin);
+  }(core.UIContainerPlugin);
 
   var StatsPlugin = /*#__PURE__*/function (_ContainerPlugin) {
     _inherits(StatsPlugin, _ContainerPlugin);
@@ -12118,7 +12217,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }]);
@@ -12140,15 +12239,15 @@
     _createClass(StatsPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container.playback, Events.PLAYBACK_PLAY, this.onPlay);
-        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, Events.CONTAINER_ENDED, this.onStop);
-        this.listenTo(this.container, Events.CONTAINER_DESTROYED, this.onStop);
-        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
-        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
-        this.listenTo(this.container, Events.CONTAINER_STATS_ADD, this.onStatsAdd);
-        this.listenTo(this.container, Events.CONTAINER_BITRATE, this.onStatsAdd);
-        this.listenTo(this.container.playback, Events.PLAYBACK_STATS_ADD, this.onStatsAdd);
+        this.listenTo(this.container.playback, core.Events.PLAYBACK_PLAY, this.onPlay);
+        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_DESTROYED, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
+        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
+        this.listenTo(this.container, core.Events.CONTAINER_STATS_ADD, this.onStatsAdd);
+        this.listenTo(this.container, core.Events.CONTAINER_BITRATE, this.onStatsAdd);
+        this.listenTo(this.container.playback, core.Events.PLAYBACK_STATS_ADD, this.onStatsAdd);
       }
     }, {
       key: "setInitialAttrs",
@@ -12215,7 +12314,7 @@
     }, {
       key: "onStatsAdd",
       value: function onStatsAdd(metric) {
-        zepto.extend(this.externalMetrics, metric);
+        core.$.extend(this.externalMetrics, metric);
       }
     }, {
       key: "getStats",
@@ -12226,7 +12325,7 @@
           rebufferingTime: this.isRebuffering() ? this.rebufferingTime + this.getRebufferingTime() : this.rebufferingTime,
           watchingTime: this.isRebuffering() ? this.getWatchingTime() - this.getRebufferingTime() : this.getWatchingTime()
         };
-        zepto.extend(metrics, this.externalMetrics);
+        core.$.extend(metrics, this.externalMetrics);
         return metrics;
       }
     }, {
@@ -12237,12 +12336,29 @@
     }]);
 
     return StatsPlugin;
-  }(ContainerPlugin);
+  }(core.ContainerPlugin);
 
-  var watermarkHTML = "<div class=\"clappr-watermark\" data-watermark data-watermark-<%=position %>>\n<% if(typeof imageLink !== 'undefined') { %>\n<a target=\"_blank\" href=\"<%= imageLink %>\">\n<% } %>\n<img src=\"<%= imageUrl %>\">\n<% if(typeof imageLink !== 'undefined') { %>\n</a>\n<% } %>\n</div>\n";
+  var watermarkHTML = "<div class=\"clappr-watermark\" data-watermark data-watermark-<%=position %>\n  style=\"opacity:<%=opacity %>; transform: translate(<%=nudge.x %>px, <%=nudge.y %>px)\">\n<% if(typeof imageLink !== 'undefined') { %>\n<a target=\"_blank\" href=\"<%= imageLink %>\" onclick=\"(event) => event.stopPropagation();\">\n<% } %>\n<img src=\"<%= imageUrl %>\">\n<% if(typeof imageLink !== 'undefined') { %>\n</a>\n<% } %>\n</div>\n";
 
-  var css_248z$7 = ".clappr-watermark[data-watermark] {\n  position: absolute;\n  min-width: 70px;\n  max-width: 200px;\n  width: 12%;\n  text-align: center;\n  z-index: 10; }\n\n.clappr-watermark[data-watermark] a {\n  outline: none;\n  cursor: pointer; }\n\n.clappr-watermark[data-watermark] img {\n  max-width: 100%; }\n\n.clappr-watermark[data-watermark-bottom-left] {\n  bottom: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-bottom-right] {\n  bottom: 10px;\n  right: 42px; }\n\n.clappr-watermark[data-watermark-top-left] {\n  top: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-top-right] {\n  top: 10px;\n  right: 37px; }\n";
+  var css_248z$7 = ".clappr-watermark[data-watermark] {\n  position: absolute;\n  min-width: 70px;\n  max-width: 200px;\n  width: 12%;\n  text-align: center;\n  z-index: 10;\n  transition: transform .2s ease, opacity .4s ease; }\n\n.clappr-watermark[data-watermark] a {\n  outline: none;\n  cursor: pointer; }\n\n.clappr-watermark[data-watermark] img {\n  max-width: 100%; }\n\n.clappr-watermark[data-watermark-bottom-left] {\n  bottom: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-bottom-right] {\n  bottom: 10px;\n  right: 42px; }\n\n.clappr-watermark[data-watermark-top-left] {\n  top: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-top-right] {\n  top: 10px;\n  right: 37px; }\n";
   styleInject(css_248z$7);
+
+  var OPTIONS_DEFAULT = {
+    position: 'bottom-right',
+    opacity: 1,
+    behavior: 'always-fixed',
+    // discrete
+    discreteDelay: 3000,
+    discreteOpacity: 0.2,
+    onControls: {
+      x: 0,
+      y: 48
+    },
+    nudge: {
+      x: 0,
+      y: 0
+    }
+  };
 
   var WaterMarkPlugin = /*#__PURE__*/function (_UIContainerPlugin) {
     _inherits(WaterMarkPlugin, _UIContainerPlugin);
@@ -12258,13 +12374,13 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.17"
+          min: "0.4.19"
         };
       }
     }, {
       key: "template",
       get: function get() {
-        return tmpl(watermarkHTML);
+        return core.template(watermarkHTML);
       }
     }]);
 
@@ -12283,31 +12399,120 @@
     _createClass(WaterMarkPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
-        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
+        this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.onPause);
+        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_HIDE, this.resetBehavior);
+        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_SHOW, this.executeBehavior);
       }
     }, {
       key: "configure",
       value: function configure() {
-        this.position = this.options.position || 'bottom-right';
+        var watermarkOptions = this.getOptions(this.options);
 
-        if (this.options.watermark) {
-          this.imageUrl = this.options.watermark;
-          this.imageLink = this.options.watermarkLink;
+        if (watermarkOptions) {
+          this.position = watermarkOptions.position;
+          this.imageUrl = watermarkOptions.url;
+          this.imageLink = watermarkOptions.link;
+          this.opacity = watermarkOptions.opacity;
+          this.behavior = watermarkOptions.behavior;
+          this.nudge = watermarkOptions.nudge;
+          this.discreteDelay = watermarkOptions.discreteDelay;
+          this.discreteOpacity = watermarkOptions.discreteOpacity;
+          this.onControls = watermarkOptions.onControls;
           this.render();
         } else {
           this.$el.remove();
         }
       }
     }, {
+      key: "getOptions",
+      value: function getOptions(options) {
+        if (_typeof(options.watermark) === 'object' && options.watermark.url) {
+          return Object.assign({}, OPTIONS_DEFAULT, options.watermark);
+        } else if (typeof options.watermark === 'string') {
+          return Object.assign({}, OPTIONS_DEFAULT, {
+            url: options.watermark,
+            link: options.watermarkLink,
+            position: options.position
+          });
+        } else {
+          return null;
+        }
+      }
+    }, {
+      key: "nudgeTransform",
+      value: function nudgeTransform(nudge) {
+        var transformedNudge = _objectSpread2({}, nudge);
+
+        if (this.position.includes('bottom')) {
+          transformedNudge.y = -transformedNudge.y;
+        }
+
+        if (this.position.includes('right')) {
+          transformedNudge.x = -transformedNudge.x;
+        }
+
+        transformedNudge.x = transformedNudge.x || 0;
+        transformedNudge.y = transformedNudge.y || 0;
+        return transformedNudge;
+      }
+    }, {
+      key: "executeBehavior",
+      value: function executeBehavior() {
+        if (!this.behavior.includes('fixed')) {
+          var nudge = {
+            x: this.onControls.x + this.nudge.x,
+            y: this.onControls.y + this.nudge.y
+          };
+          var transformedNudge = this.nudgeTransform(nudge);
+          this.$el.find('.clappr-watermark')[0].style.transform = "translate(".concat(transformedNudge.x, "px, ").concat(transformedNudge.y, "px)");
+
+          if (!this.behavior.includes('fixed')) {
+            this.$el.find('.clappr-watermark')[0].style.zIndex = 100000;
+          }
+        }
+
+        if (this.behavior.includes('discrete') && this.timeout) {
+          this.$el.find('.clappr-watermark')[0].style.opacity = this.opacity;
+          clearTimeout(this.timeout);
+        }
+      }
+    }, {
+      key: "resetBehavior",
+      value: function resetBehavior() {
+        var _this2 = this;
+
+        if (!this.behavior.includes('fixed')) {
+          var transformedNudge = this.nudgeTransform(this.nudge);
+          this.$el.find('.clappr-watermark')[0].style.transform = "translate(".concat(transformedNudge.x, "px, ").concat(transformedNudge.y, "px)");
+        }
+
+        if (this.behavior.includes('discrete')) {
+          this.timeout = setTimeout(function () {
+            if (!_this2.paused) {
+              _this2.$el.find('.clappr-watermark')[0].style.opacity = _this2.discreteOpacity;
+            }
+          }, this.discreteDelay);
+        }
+      }
+    }, {
       key: "onPlay",
       value: function onPlay() {
+        this.paused = false;
         if (!this.hidden) this.$el.show();
+      }
+    }, {
+      key: "onPause",
+      value: function onPause() {
+        this.paused = true;
       }
     }, {
       key: "onStop",
       value: function onStop() {
+        console.log('stop');
         this.$el.hide();
       }
     }, {
@@ -12317,7 +12522,9 @@
         var templateOptions = {
           position: this.position,
           imageUrl: this.imageUrl,
-          imageLink: this.imageLink
+          imageLink: this.imageLink,
+          opacity: this.opacity,
+          nudge: this.nudgeTransform(this.nudge)
         };
         this.$el.html(this.template(templateOptions));
         this.container.$el.append(this.$el);
@@ -12326,7 +12533,7 @@
     }]);
 
     return WaterMarkPlugin;
-  }(UIContainerPlugin);
+  }(core.UIContainerPlugin);
   var Plugins = {
     ClickToPause: ClickToPausePlugin,
     ClosedCaptions: ClosedCaptions$1,
@@ -12364,7 +12571,7 @@
       SpinnerThreeBounce = Plugins.SpinnerThreeBounce,
       Stats = Plugins.Stats,
       WaterMark = Plugins.WaterMark;
-  var base_bundle = _objectSpread2$1(_objectSpread2$1({}, main), {}, {
+  var base_bundle = _objectSpread2$2(_objectSpread2$2({}, main), {}, {
     ClickToPause: ClickToPause,
     ClosedCaptions: ClosedCaptions,
     DVRControls: DVRControls,

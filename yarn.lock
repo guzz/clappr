@@ -838,21 +838,6 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@clappr/core@^0.4.18":
-  version "0.4.18"
-  resolved "https://registry.yarnpkg.com/@clappr/core/-/core-0.4.18.tgz#7becc6c32f2a48a097d1ca158dbda0169f7979ce"
-  integrity sha512-MMZ6j2+pbtoo/dPi9nyo/dAfW3u0D3np7mpT0VHNNjy+K8qZZAlyF2kYNHjwqyj6pRY0kRWj4KMXA5SUMR7Zyg==
-
-"@clappr/hlsjs-playback@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@clappr/hlsjs-playback/-/hlsjs-playback-0.5.3.tgz#0c5128d70b351fc84c59bc782df24b06b7a59317"
-  integrity sha512-+DNh7ZuGBcusEuR6SnCEbilLTEUZsDDkQkaFfNPSd8CovShbM0UXjDHiEu0F43IKFb/g4HJDOd7Eban5tMkMpQ==
-
-"@clappr/plugins@^0.4.11":
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/@clappr/plugins/-/plugins-0.4.11.tgz#96ef317ba8c9fec4d0f54ac513bef400d5628672"
-  integrity sha512-2pRK+c9sWzZ484JVD5Iz28JycoFAp8d1/FhVGRBLakggWvVLO6uDUUnpQQPZxmBny0PosBBXWQrkEMlkjV51rw==
-
 "@commitlint/execute-rule@^12.0.1":
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-12.0.1.tgz#5bb2eba929270cafb2bd8191799d8b451de7fb7e"
@@ -902,6 +887,21 @@
     js-yaml "^3.13.1"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
+
+"@guzzj/clappr-core@^0.4.19":
+  version "0.4.19"
+  resolved "https://registry.yarnpkg.com/@guzzj/clappr-core/-/clappr-core-0.4.19.tgz#30c3bbf8530cc4e806f4231d258fe4ffaeecfbc5"
+  integrity sha512-xD6E4lflQ4S4n4p2pMJsoM0CKsIjVwyejf6wl1y+OQzKaADpJ+esZ1Psbq2BMlMXpwaHHiOwEfHOPjy+OiHTWw==
+
+"@guzzj/clappr-plugins@^0.4.11":
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/@guzzj/clappr-plugins/-/clappr-plugins-0.4.11.tgz#b0d5ea877c386994c7375e2f543a96d8ecf99604"
+  integrity sha512-y78oGQJJl7zNu1j1rWhw0yDbzIubpYhVHoq3CqZDugyCdfamQ31WsQi7DuxwOk/i3ecAp9puoc/7sOBXtiFXtw==
+
+"@guzzj/hlsjs-playback@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@guzzj/hlsjs-playback/-/hlsjs-playback-0.5.3.tgz#775a8ee7d4434abc7adcea849de5ae40d12ddba0"
+  integrity sha512-mRxHd/pxnjXGl/5ZR1m8Gx/BX7FBIHOYucwA/2ZuyuhDv4BTtRoRTxfDvum/0AnH04uf7KxLRfMCUkVA9SAoAA==
 
 "@npmcli/ci-detect@^1.0.0":
   version "1.3.0"

@@ -1,6 +1,6 @@
 import BaseExports from './base_bundle'
 
-import HLS from '@clappr/hlsjs-playback'
+import HLS from '@guzzj/hlsjs-playback'
 
 BaseExports.Loader.registerPlayback(HLS)
 
