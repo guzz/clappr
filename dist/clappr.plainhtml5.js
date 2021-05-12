@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@clappr/core')) :
-  typeof define === 'function' && define.amd ? define(['@clappr/core'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Clappr = factory(global.core));
-}(this, (function (core) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Clappr = factory());
+}(this, (function () { 'use strict';
 
   function _defineProperty$2(obj, key, value) {
     if (key in obj) {
@@ -9537,20 +9537,20 @@
     _createClass(ClickToPausePlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, core.Events.CONTAINER_CLICK, this.click);
-        this.listenTo(this.container, core.Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
+        this.listenTo(this.container, Events.CONTAINER_CLICK, this.click);
+        this.listenTo(this.container, Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
       }
     }, {
       key: "click",
       value: function click() {
-        if (this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrEnabled()) {
+        if (this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrEnabled()) {
           if (this.container.isPlaying()) this.container.pause();else this.container.play();
         }
       }
     }, {
       key: "settingsUpdate",
       value: function settingsUpdate() {
-        var pointerEnabled = this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrEnabled();
+        var pointerEnabled = this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrEnabled();
         if (pointerEnabled === this.pointerEnabled) return;
         var method = pointerEnabled ? 'addClass' : 'removeClass';
         this.container.$el[method]('pointer-enabled');
@@ -9559,7 +9559,7 @@
     }]);
 
     return ClickToPausePlugin;
-  }(core.ContainerPlugin);
+  }(ContainerPlugin);
 
   var ccIcon = "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t viewBox=\"0 0 49 41.8\" style=\"enable-background:new 0 0 49 41.8;\" xml:space=\"preserve\">\n<path d=\"M47.1,0H3.2C1.6,0,0,1.2,0,2.8v31.5C0,35.9,1.6,37,3.2,37h11.9l3.2,1.9l4.7,2.7c0.9,0.5,2-0.1,2-1.1V37h22.1\n\tc1.6,0,1.9-1.1,1.9-2.7V2.8C49,1.2,48.7,0,47.1,0z M7.2,18.6c0-4.8,3.5-9.3,9.9-9.3c4.8,0,7.1,2.7,7.1,2.7l-2.5,4\n\tc0,0-1.7-1.7-4.2-1.7c-2.8,0-4.3,2.1-4.3,4.3c0,2.1,1.5,4.4,4.5,4.4c2.5,0,4.9-2.1,4.9-2.1l2.2,4.2c0,0-2.7,2.9-7.6,2.9\n\tC10.8,27.9,7.2,23.5,7.2,18.6z M36.9,27.9c-6.4,0-9.9-4.4-9.9-9.3c0-4.8,3.5-9.3,9.9-9.3C41.7,9.3,44,12,44,12l-2.5,4\n\tc0,0-1.7-1.7-4.2-1.7c-2.8,0-4.3,2.1-4.3,4.3c0,2.1,1.5,4.4,4.5,4.4c2.5,0,4.9-2.1,4.9-2.1l2.2,4.2C44.5,25,41.9,27.9,36.9,27.9z\"/>\n</svg>";
 
@@ -9615,7 +9615,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(ccHTML);
+        return tmpl(ccHTML);
       }
     }, {
       key: "events",
@@ -9653,9 +9653,9 @@
     _createClass(ClosedCaptions, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.render);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_HIDE, this.hideContextMenu);
+        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
+        this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_HIDE, this.hideContextMenu);
         this.bindContainerEvents();
       }
     }, {
@@ -9664,9 +9664,9 @@
         this.container = this.core.activeContainer;
 
         if (this.container) {
-          this.listenTo(this.container, core.Events.CONTAINER_SUBTITLE_AVAILABLE, this.onSubtitleAvailable);
-          this.listenTo(this.container, core.Events.CONTAINER_SUBTITLE_CHANGED, this.onSubtitleChanged);
-          this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onContainerStop);
+          this.listenTo(this.container, Events.CONTAINER_SUBTITLE_AVAILABLE, this.onSubtitleAvailable);
+          this.listenTo(this.container, Events.CONTAINER_SUBTITLE_CHANGED, this.onSubtitleChanged);
+          this.listenTo(this.container, Events.CONTAINER_STOP, this.onContainerStop);
         }
       }
     }, {
@@ -9763,7 +9763,7 @@
     }]);
 
     return ClosedCaptions;
-  }(core.UICorePlugin);
+  }(UICorePlugin);
 
   var dvrHTML = "<div class=\"live-info\"><%= live %></div>\n<button type=\"button\" class=\"live-button\" aria-label=\"<%= backToLive %>\"><%= backToLive %></button>\n";
 
@@ -9778,7 +9778,7 @@
     _createClass(DVRControls, [{
       key: "template",
       get: function get() {
-        return core.template(dvrHTML);
+        return tmpl(dvrHTML);
       }
     }, {
       key: "name",
@@ -9833,9 +9833,9 @@
         var _this2 = this;
 
         if (this.core.mediaControl.settings) {
-          this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this.containerChanged);
-          this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.settingsUpdate);
-          this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.render);
+          this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.containerChanged);
+          this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.settingsUpdate);
+          this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.render);
         } else {
           setTimeout(function () {
             return _this2.bindCoreEvents();
@@ -9846,8 +9846,8 @@
       key: "bindContainerEvents",
       value: function bindContainerEvents() {
         if (this.core.activeContainer) {
-          this.listenToOnce(this.core.activeContainer, core.Events.CONTAINER_TIMEUPDATE, this.render);
-          this.listenTo(this.core.activeContainer, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.dvrChanged);
+          this.listenToOnce(this.core.activeContainer, Events.CONTAINER_TIMEUPDATE, this.render);
+          this.listenTo(this.core.activeContainer, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.dvrChanged);
         }
       }
     }, {
@@ -9859,7 +9859,7 @@
     }, {
       key: "dvrChanged",
       value: function dvrChanged(dvrEnabled) {
-        if (this.core.getPlaybackType() !== core.Playback.LIVE) return;
+        if (this.core.getPlaybackType() !== Playback.LIVE) return;
         this.settingsUpdate();
         this.core.mediaControl.$el.addClass('live');
 
@@ -9899,7 +9899,7 @@
       key: "shouldRender",
       value: function shouldRender() {
         var useDvrControls = this.core.options.useDvrControls === undefined || !!this.core.options.useDvrControls;
-        return useDvrControls && this.core.getPlaybackType() === core.Playback.LIVE;
+        return useDvrControls && this.core.getPlaybackType() === Playback.LIVE;
       }
     }, {
       key: "render",
@@ -9919,7 +9919,7 @@
     }]);
 
     return DVRControls;
-  }(core.UICorePlugin);
+  }(UICorePlugin);
 
   var EndVideo$1 = /*#__PURE__*/function (_CorePlugin) {
     _inherits(EndVideo, _CorePlugin);
@@ -9935,12 +9935,12 @@
     _createClass(EndVideo, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
         var container = this.core.activeContainer;
 
         if (container) {
-          this.listenTo(container, core.Events.CONTAINER_ENDED, this.ended);
-          this.listenTo(container, core.Events.CONTAINER_STOP, this.ended);
+          this.listenTo(container, Events.CONTAINER_ENDED, this.ended);
+          this.listenTo(container, Events.CONTAINER_STOP, this.ended);
         }
       }
     }, {
@@ -9970,7 +9970,7 @@
     }]);
 
     return EndVideo;
-  }(core.CorePlugin);
+  }(CorePlugin);
 
   var reloadIcon = "<svg fill=\"#FFFFFF\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/>\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n</svg>";
 
@@ -9999,7 +9999,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(templateHtml);
+        return tmpl(templateHtml);
       }
     }, {
       key: "container",
@@ -10029,8 +10029,8 @@
     _createClass(ErrorScreen, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, core.Events.ERROR, this.onError);
-        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onContainerChanged);
+        this.listenTo(this.core, Events.ERROR, this.onError);
+        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onContainerChanged);
       }
     }, {
       key: "bindReload",
@@ -10043,7 +10043,7 @@
       value: function reload() {
         var _this2 = this;
 
-        this.listenToOnce(this.core, core.Events.CORE_READY, function () {
+        this.listenToOnce(this.core, Events.CORE_READY, function () {
           return _this2.container.play();
         });
         this.core.load(this.options.sources, this.options.mimeType);
@@ -10066,7 +10066,7 @@
       value: function onError() {
         var err = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-        if (err.level === core.PlayerError.Levels.FATAL) {
+        if (err.level === PlayerError.Levels.FATAL) {
           this.err = err;
           this.container.disableMediaControl();
           this.container.stop();
@@ -10102,13 +10102,13 @@
     }]);
 
     return ErrorScreen;
-  }(core.UICorePlugin);
+  }(UICorePlugin);
 
   var playIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M1.425.35L14.575 8l-13.15 7.65V.35z\"/>\n</svg>";
 
   var pauseIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 14.76H6.43V1.24H1.71v13.52zm7.86-13.52v13.52h4.716V1.24H9.573z\"/>\n</svg>";
 
-  var oldIcon = core.$('link[rel="shortcut icon"]');
+  var oldIcon = zepto('link[rel="shortcut icon"]');
 
   var Favicon$1 = /*#__PURE__*/function (_CorePlugin) {
     _inherits(Favicon, _CorePlugin);
@@ -10152,19 +10152,19 @@
       value: function configure() {
         if (this.core.options.changeFavicon) {
           if (!this.enabled) {
-            this.stopListening(this.core, core.Events.CORE_OPTIONS_CHANGE);
+            this.stopListening(this.core, Events.CORE_OPTIONS_CHANGE);
             this.enable();
           }
         } else if (this.enabled) {
           this.disable();
-          this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
+          this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
         }
       }
     }, {
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
-        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
+        this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
         this.core.activeContainer && this.containerChanged();
       }
     }, {
@@ -10172,11 +10172,11 @@
       value: function containerChanged() {
         this._container && this.stopListening(this._container);
         this._container = this.core.activeContainer;
-        this.listenTo(this._container, core.Events.CONTAINER_PLAY, this.setPlayIcon);
-        this.listenTo(this._container, core.Events.CONTAINER_PAUSE, this.setPauseIcon);
-        this.listenTo(this._container, core.Events.CONTAINER_STOP, this.resetIcon);
-        this.listenTo(this._container, core.Events.CONTAINER_ENDED, this.resetIcon);
-        this.listenTo(this._container, core.Events.CONTAINER_ERROR, this.resetIcon);
+        this.listenTo(this._container, Events.CONTAINER_PLAY, this.setPlayIcon);
+        this.listenTo(this._container, Events.CONTAINER_PAUSE, this.setPauseIcon);
+        this.listenTo(this._container, Events.CONTAINER_STOP, this.resetIcon);
+        this.listenTo(this._container, Events.CONTAINER_ENDED, this.resetIcon);
+        this.listenTo(this._container, Events.CONTAINER_ERROR, this.resetIcon);
         this.resetIcon();
       }
     }, {
@@ -10196,15 +10196,15 @@
     }, {
       key: "createIcon",
       value: function createIcon(svg) {
-        var canvas = core.$('<canvas/>');
+        var canvas = zepto('<canvas/>');
         canvas[0].width = 16;
         canvas[0].height = 16;
         var ctx = canvas[0].getContext('2d');
         ctx.fillStyle = '#000';
-        var d = core.$(svg).find('path').attr('d');
+        var d = zepto(svg).find('path').attr('d');
         var path = new Path2D(d);
         ctx.fill(path);
-        var icon = core.$('<link rel="shortcut icon" type="image/png"/>');
+        var icon = zepto('<link rel="shortcut icon" type="image/png"/>');
         icon.attr('href', canvas[0].toDataURL('image/png'));
         return icon;
       }
@@ -10223,21 +10223,21 @@
     }, {
       key: "resetIcon",
       value: function resetIcon() {
-        core.$('link[rel="shortcut icon"]').remove();
-        core.$('head').append(this.oldIcon);
+        zepto('link[rel="shortcut icon"]').remove();
+        zepto('head').append(this.oldIcon);
       }
     }, {
       key: "changeIcon",
       value: function changeIcon(icon) {
         if (icon) {
-          core.$('link[rel="shortcut icon"]').remove();
-          core.$('head').append(icon);
+          zepto('link[rel="shortcut icon"]').remove();
+          zepto('head').append(icon);
         }
       }
     }]);
 
     return Favicon;
-  }(core.CorePlugin);
+  }(CorePlugin);
 
   var GoogleAnalytics$1 = /*#__PURE__*/function (_ContainerPlugin) {
     _inherits(GoogleAnalytics, _ContainerPlugin);
@@ -10303,24 +10303,24 @@
         var _this3 = this;
 
         if (this.container) {
-          this.listenTo(this.container, core.Events.CONTAINER_READY, this.onReady);
-          this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
-          this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
-          this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.onPause);
-          this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onEnded);
-          this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
-          this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
-          this.listenTo(this.container, core.Events.CONTAINER_ERROR, this.onError);
-          this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKSTATE, this.onPlaybackChanged);
-          this.listenTo(this.container, core.Events.CONTAINER_VOLUME, function (event) {
+          this.listenTo(this.container, Events.CONTAINER_READY, this.onReady);
+          this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
+          this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
+          this.listenTo(this.container, Events.CONTAINER_PAUSE, this.onPause);
+          this.listenTo(this.container, Events.CONTAINER_ENDED, this.onEnded);
+          this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
+          this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
+          this.listenTo(this.container, Events.CONTAINER_ERROR, this.onError);
+          this.listenTo(this.container, Events.CONTAINER_PLAYBACKSTATE, this.onPlaybackChanged);
+          this.listenTo(this.container, Events.CONTAINER_VOLUME, function (event) {
             return _this3.onVolumeChanged(event);
           });
-          this.listenTo(this.container, core.Events.CONTAINER_SEEK, function (event) {
+          this.listenTo(this.container, Events.CONTAINER_SEEK, function (event) {
             return _this3.onSeek(event);
           });
-          this.listenTo(this.container, core.Events.CONTAINER_FULL_SCREEN, this.onFullscreen);
-          this.listenTo(this.container, core.Events.CONTAINER_HIGHDEFINITIONUPDATE, this.onHD);
-          this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.onDVR);
+          this.listenTo(this.container, Events.CONTAINER_FULL_SCREEN, this.onFullscreen);
+          this.listenTo(this.container, Events.CONTAINER_HIGHDEFINITIONUPDATE, this.onHD);
+          this.listenTo(this.container, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.onDVR);
         }
 
         _gaq.push([this.trackerName + '_setAccount', this.account]);
@@ -10413,7 +10413,7 @@
     }]);
 
     return GoogleAnalytics;
-  }(core.ContainerPlugin);
+  }(ContainerPlugin);
 
   /* eslint-disable */
   // Kibo is released under the MIT License. Copyright (c) 2013 marquete.
@@ -10786,11 +10786,11 @@
 
   var hdIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M5.375 7.062H2.637V4.26H.502v7.488h2.135V8.9h2.738v2.848h2.133V4.26H5.375v2.802zm5.97-2.81h-2.84v7.496h2.798c2.65 0 4.195-1.607 4.195-3.77v-.022c0-2.162-1.523-3.704-4.154-3.704zm2.06 3.758c0 1.21-.81 1.896-2.03 1.896h-.83V6.093h.83c1.22 0 2.03.696 2.03 1.896v.02z\"/>\n</svg>";
 
-  var Config = core.Utils.Config,
-      Fullscreen = core.Utils.Fullscreen,
-      formatTime = core.Utils.formatTime,
-      extend = core.Utils.extend,
-      removeArrayItem = core.Utils.removeArrayItem;
+  var Config = Utils.Config,
+      Fullscreen = Utils.Fullscreen,
+      formatTime = Utils.formatTime,
+      extend = Utils.extend,
+      removeArrayItem = Utils.removeArrayItem;
 
   var MediaControl$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(MediaControl, _UICorePlugin);
@@ -10812,7 +10812,7 @@
     }, {
       key: "disabled",
       get: function get() {
-        var playbackIsNOOP = this.container && this.container.getPlaybackType() === core.Playback.NO_OP;
+        var playbackIsNOOP = this.container && this.container.getPlaybackType() === Playback.NO_OP;
         return this.userDisabled || playbackIsNOOP;
       }
     }, {
@@ -10860,7 +10860,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(mediaControlHTML);
+        return tmpl(mediaControlHTML);
       }
     }, {
       key: "volume",
@@ -10874,12 +10874,12 @@
       }
     }]);
 
-    function MediaControl(core$1) {
+    function MediaControl(core) {
       var _this;
 
       _classCallCheck(this, MediaControl);
 
-      _this = _super.call(this, core$1);
+      _this = _super.call(this, core);
       _this.persistConfig = _this.options.persistConfig;
       _this.currentPositionValue = null;
       _this.currentDurationValue = null;
@@ -10898,7 +10898,7 @@
       _this.bindKeyEvents();
 
       if (_this.container) {
-        if (!core.$.isEmptyObject(_this.container.settings)) _this.settings = core.$.extend({}, _this.container.settings);
+        if (!zepto.isEmptyObject(_this.container.settings)) _this.settings = zepto.extend({}, _this.container.settings);
       } else {
         _this.settings = {};
       }
@@ -10914,8 +10914,8 @@
         return _this.updateDrag(event);
       };
 
-      core.$(document).bind('mouseup', _this.stopDragHandler);
-      core.$(document).bind('mousemove', _this.updateDragHandler);
+      zepto(document).bind('mouseup', _this.stopDragHandler);
+      zepto(document).bind('mousemove', _this.updateDragHandler);
       return _this;
     }
 
@@ -10937,38 +10937,38 @@
         var _this3 = this;
 
         this.stopListening();
-        this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onActiveContainerChanged);
-        this.listenTo(this.core, core.Events.CORE_MOUSE_MOVE, this.show);
-        this.listenTo(this.core, core.Events.CORE_MOUSE_LEAVE, function () {
+        this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onActiveContainerChanged);
+        this.listenTo(this.core, Events.CORE_MOUSE_MOVE, this.show);
+        this.listenTo(this.core, Events.CORE_MOUSE_LEAVE, function () {
           return _this3.hide(_this3.options.hideMediaControlDelay);
         });
-        this.listenTo(this.core, core.Events.CORE_FULLSCREEN, this.show);
-        this.listenTo(this.core, core.Events.CORE_OPTIONS_CHANGE, this.configure);
-        this.listenTo(this.core, core.Events.CORE_RESIZE, this.playerResize);
+        this.listenTo(this.core, Events.CORE_FULLSCREEN, this.show);
+        this.listenTo(this.core, Events.CORE_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.core, Events.CORE_RESIZE, this.playerResize);
         this.bindContainerEvents();
       }
     }, {
       key: "bindContainerEvents",
       value: function bindContainerEvents() {
         if (!this.container) return;
-        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.changeTogglePlay);
-        this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.changeTogglePlay);
-        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.changeTogglePlay);
-        this.listenTo(this.container, core.Events.CONTAINER_DBLCLICK, this.toggleFullscreen);
-        this.listenTo(this.container, core.Events.CONTAINER_TIMEUPDATE, this.onTimeUpdate);
-        this.listenTo(this.container, core.Events.CONTAINER_PROGRESS, this.updateProgressBar);
-        this.listenTo(this.container, core.Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
-        this.listenTo(this.container, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.settingsUpdate);
-        this.listenTo(this.container, core.Events.CONTAINER_HIGHDEFINITIONUPDATE, this.highDefinitionUpdate);
-        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_DISABLE, this.disable);
-        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_ENABLE, this.enable);
-        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.ended);
-        this.listenTo(this.container, core.Events.CONTAINER_VOLUME, this.onVolumeChanged);
-        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.setInitialVolume);
+        this.listenTo(this.container, Events.CONTAINER_PLAY, this.changeTogglePlay);
+        this.listenTo(this.container, Events.CONTAINER_PAUSE, this.changeTogglePlay);
+        this.listenTo(this.container, Events.CONTAINER_STOP, this.changeTogglePlay);
+        this.listenTo(this.container, Events.CONTAINER_DBLCLICK, this.toggleFullscreen);
+        this.listenTo(this.container, Events.CONTAINER_TIMEUPDATE, this.onTimeUpdate);
+        this.listenTo(this.container, Events.CONTAINER_PROGRESS, this.updateProgressBar);
+        this.listenTo(this.container, Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
+        this.listenTo(this.container, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.settingsUpdate);
+        this.listenTo(this.container, Events.CONTAINER_HIGHDEFINITIONUPDATE, this.highDefinitionUpdate);
+        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_DISABLE, this.disable);
+        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_ENABLE, this.enable);
+        this.listenTo(this.container, Events.CONTAINER_ENDED, this.ended);
+        this.listenTo(this.container, Events.CONTAINER_VOLUME, this.onVolumeChanged);
+        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.setInitialVolume);
 
         if (this.container.playback.el.nodeName.toLowerCase() === 'video') {
           // wait until the metadata has loaded and then check if fullscreen on video tag is supported
-          this.listenToOnce(this.container, core.Events.CONTAINER_LOADEDMETADATA, this.onLoadedMetadataOnVideoTag);
+          this.listenToOnce(this.container, Events.CONTAINER_LOADEDMETADATA, this.onLoadedMetadataOnVideoTag);
         }
       }
     }, {
@@ -11067,12 +11067,12 @@
         if (this.container && this.container.isPlaying()) {
           this.$playPauseToggle.append(pauseIcon);
           this.$playStopToggle.append(stopIcon);
-          this.trigger(core.Events.MEDIACONTROL_PLAYING);
+          this.trigger(Events.MEDIACONTROL_PLAYING);
         } else {
           this.$playPauseToggle.append(playIcon);
           this.$playStopToggle.append(playIcon);
-          this.trigger(core.Events.MEDIACONTROL_NOTPLAYING);
-          core.Browser.isMobile && this.show();
+          this.trigger(Events.MEDIACONTROL_NOTPLAYING);
+          Browser.isMobile && this.show();
         }
 
         this.applyButtonStyle(this.$playPauseToggle);
@@ -11088,12 +11088,12 @@
           });
         }
 
-        this.trigger(core.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
+        this.trigger(Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
       }
     }, {
       key: "mouseleaveOnSeekBar",
       value: function mouseleaveOnSeekBar(event) {
-        this.trigger(core.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, event);
+        this.trigger(Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, event);
       }
     }, {
       key: "onVolumeClick",
@@ -11198,20 +11198,20 @@
           if (_this4.container && _this4.container.isReady) {
             _this4.container.setVolume(value);
           } else {
-            _this4.listenToOnce(_this4.container, core.Events.CONTAINER_READY, function () {
+            _this4.listenToOnce(_this4.container, Events.CONTAINER_READY, function () {
               _this4.container.setVolume(value);
             });
           }
         };
 
-        if (!this.container) this.listenToOnce(this, core.Events.MEDIACONTROL_CONTAINERCHANGED, function () {
+        if (!this.container) this.listenToOnce(this, Events.MEDIACONTROL_CONTAINERCHANGED, function () {
           return setWhenContainerReady();
         });else setWhenContainerReady();
       }
     }, {
       key: "toggleFullscreen",
       value: function toggleFullscreen() {
-        this.trigger(core.Events.MEDIACONTROL_FULLSCREEN, this.name);
+        this.trigger(Events.MEDIACONTROL_FULLSCREEN, this.name);
         this.container.fullscreen();
         this.core.toggleFullscreen();
         this.resetUserKeepVisible();
@@ -11226,9 +11226,9 @@
         this.changeTogglePlay();
         this.bindContainerEvents();
         this.settingsUpdate();
-        this.container && this.container.trigger(core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.container.isDvrInUse());
+        this.container && this.container.trigger(Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.container.isDvrInUse());
         this.container && this.container.mediaControlDisabled && this.disable();
-        this.trigger(core.Events.MEDIACONTROL_CONTAINERCHANGED);
+        this.trigger(Events.MEDIACONTROL_CONTAINERCHANGED);
       }
     }, {
       key: "showVolumeBar",
@@ -11287,7 +11287,7 @@
         if (this.currentPositionValue === null || this.currentDurationValue === null) return; // default to 100%
 
         this.currentSeekBarPercentage = 100;
-        if (this.container && (this.container.getPlaybackType() !== core.Playback.LIVE || this.container.isDvrInUse())) this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
+        if (this.container && (this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrInUse())) this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
         this.setSeekPercentage(this.currentSeekBarPercentage);
         var newPosition = formatTime(this.currentPositionValue);
         var newDuration = formatTime(this.currentDurationValue);
@@ -11350,8 +11350,8 @@
         if (!event || mousePointerMoved || navigator.userAgent.match(/firefox/i)) {
           clearTimeout(this.hideId);
           this.$el.show();
-          this.trigger(core.Events.MEDIACONTROL_SHOW, this.name);
-          this.container && this.container.trigger(core.Events.CONTAINER_MEDIACONTROL_SHOW, this.name);
+          this.trigger(Events.MEDIACONTROL_SHOW, this.name);
+          this.container && this.container.trigger(Events.CONTAINER_MEDIACONTROL_SHOW, this.name);
           this.$el.removeClass('media-control-hide');
           this.hideId = setTimeout(function () {
             return _this6.hide();
@@ -11384,8 +11384,8 @@
             return _this7.hide();
           }, timeout);
         } else {
-          this.trigger(core.Events.MEDIACONTROL_HIDE, this.name);
-          this.container && this.container.trigger(core.Events.CONTAINER_MEDIACONTROL_HIDE, this.name);
+          this.trigger(Events.MEDIACONTROL_HIDE, this.name);
+          this.container && this.container.trigger(Events.CONTAINER_MEDIACONTROL_HIDE, this.name);
           this.$el.addClass('media-control-hide');
           this.hideVolumeBar(0);
           var showing = false;
@@ -11419,7 +11419,7 @@
     }, {
       key: "getSettings",
       value: function getSettings() {
-        return core.$.extend(true, {}, this.container && this.container.settings);
+        return zepto.extend(true, {}, this.container && this.container.settings);
       }
     }, {
       key: "highDefinitionUpdate",
@@ -11513,7 +11513,7 @@
       value: function bindKeyEvents() {
         var _this9 = this;
 
-        if (core.Browser.isMobile || this.options.disableKeyboardShortcuts) return;
+        if (Browser.isMobile || this.options.disableKeyboardShortcuts) return;
         this.unbindKeyEvents();
         this.kibo = new Kibo(this.options.focusElement || this.options.parentElement);
         this.bindKeyAndShow('space', function () {
@@ -11572,13 +11572,13 @@
     }, {
       key: "applyButtonStyle",
       value: function applyButtonStyle(element) {
-        this.buttonsColor && element && core.$(element).find('svg path').css('fill', this.buttonsColor);
+        this.buttonsColor && element && zepto(element).find('svg path').css('fill', this.buttonsColor);
       }
     }, {
       key: "destroy",
       value: function destroy() {
-        core.$(document).unbind('mouseup', this.stopDragHandler);
-        core.$(document).unbind('mousemove', this.updateDragHandler);
+        zepto(document).unbind('mouseup', this.stopDragHandler);
+        zepto(document).unbind('mousemove', this.updateDragHandler);
         this.unbindKeyEvents();
         this.stopListening();
 
@@ -11595,7 +11595,7 @@
       value: function configure(options) {
         // Check if chromeless mode or if configure is called with new source(s)
         if (this.options.chromeless || options.source || options.sources) this.disable();else this.enable();
-        this.trigger(core.Events.MEDIACONTROL_OPTIONS_CHANGE);
+        this.trigger(Events.MEDIACONTROL_OPTIONS_CHANGE);
       }
     }, {
       key: "render",
@@ -11620,8 +11620,8 @@
         // Display mute/unmute icon only if Safari version >= 10
 
 
-        if (core.Browser.isSafari && core.Browser.isMobile) {
-          if (core.Browser.version < 10) this.$volumeContainer.css('display', 'none');else this.$volumeBarContainer.css('display', 'none');
+        if (Browser.isSafari && Browser.isMobile) {
+          if (Browser.version < 10) this.$volumeContainer.css('display', 'none');else this.$volumeBarContainer.css('display', 'none');
         }
 
         this.$seekBarPosition.addClass('media-control-notransition');
@@ -11632,7 +11632,7 @@
         this.setSeekPercentage(previousSeekPercentage);
         setTimeout(function () {
           !_this10.settings.seekEnabled && _this10.$seekBarContainer.addClass('seek-disabled');
-          !core.Browser.isMobile && !_this10.options.disableKeyboardShortcuts && _this10.bindKeyEvents();
+          !Browser.isMobile && !_this10.options.disableKeyboardShortcuts && _this10.bindKeyEvents();
 
           _this10.playerResize({
             width: _this10.options.width,
@@ -11646,13 +11646,13 @@
         this.core.$el.append(this.el);
         this.rendered = true;
         this.updateVolumeUI();
-        this.trigger(core.Events.MEDIACONTROL_RENDERED);
+        this.trigger(Events.MEDIACONTROL_RENDERED);
         return this;
       }
     }]);
 
     return MediaControl;
-  }(core.UICorePlugin);
+  }(UICorePlugin);
 
   MediaControl$1.extend = function (properties) {
     return extend(MediaControl$1, properties);
@@ -11683,13 +11683,13 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(posterHTML);
+        return tmpl(posterHTML);
       }
     }, {
       key: "shouldRender",
       get: function get() {
         var showForNoOp = !!(this.options.poster && this.options.poster.showForNoOp);
-        return this.container.playback.name !== 'html_img' && (this.container.playback.getPlaybackType() !== core.Playback.NO_OP || showForNoOp);
+        return this.container.playback.name !== 'html_img' && (this.container.playback.getPlaybackType() !== Playback.NO_OP || showForNoOp);
       }
     }, {
       key: "attributes",
@@ -11733,18 +11733,18 @@
     _createClass(PosterPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
-        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.update);
-        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.update);
-        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.render);
-        this.listenTo(this.container, core.Events.CONTAINER_ERROR, this.onError);
-        this.showOnVideoEnd && this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
+        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.update);
+        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.update);
+        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.render);
+        this.listenTo(this.container, Events.CONTAINER_ERROR, this.onError);
+        this.showOnVideoEnd && this.listenTo(this.container, Events.CONTAINER_ENDED, this.onStop);
       }
     }, {
       key: "onError",
       value: function onError(error) {
-        this.hasFatalError = error.level === core.PlayerError.Levels.FATAL;
+        this.hasFatalError = error.level === PlayerError.Levels.FATAL;
 
         if (this.hasFatalError) {
           this.hasStartedPlaying = false;
@@ -11874,14 +11874,14 @@
     }]);
 
     return PosterPlugin;
-  }(core.UIContainerPlugin);
+  }(UIContainerPlugin);
 
   var seekTimeHTML = "<span data-seek-time></span>\n<span data-duration></span>\n";
 
   var css_248z$5 = ".seek-time[data-seek-time] {\n  position: absolute;\n  white-space: nowrap;\n  height: 20px;\n  line-height: 20px;\n  font-size: 0;\n  left: -100%;\n  bottom: 55px;\n  background-color: rgba(2, 2, 2, 0.5);\n  z-index: 9999;\n  transition: opacity 0.1s ease; }\n  .seek-time[data-seek-time].hidden[data-seek-time] {\n    opacity: 0; }\n  .seek-time[data-seek-time] [data-seek-time] {\n    display: inline-block;\n    color: white;\n    font-size: 10px;\n    padding-left: 7px;\n    padding-right: 7px;\n    vertical-align: top; }\n  .seek-time[data-seek-time] [data-duration] {\n    display: inline-block;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 10px;\n    padding-right: 7px;\n    vertical-align: top; }\n    .seek-time[data-seek-time] [data-duration]:before {\n      content: \"|\";\n      margin-right: 7px; }\n";
   styleInject(css_248z$5);
 
-  var formatTime$1 = core.Utils.formatTime;
+  var formatTime$1 = Utils.formatTime;
 
   var SeekTime$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(SeekTime, _UICorePlugin);
@@ -11903,7 +11903,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(seekTimeHTML);
+        return tmpl(seekTimeHTML);
       }
     }, {
       key: "attributes",
@@ -11926,7 +11926,7 @@
     }, {
       key: "isLiveStreamWithDvr",
       get: function get() {
-        return this.mediaControlContainer && this.mediaControlContainer.getPlaybackType() === core.Playback.LIVE && this.mediaControlContainer.isDvrEnabled();
+        return this.mediaControlContainer && this.mediaControlContainer.getPlaybackType() === Playback.LIVE && this.mediaControlContainer.isDvrEnabled();
       }
     }, {
       key: "durationShown",
@@ -11962,14 +11962,14 @@
     _createClass(SeekTime, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_RENDERED, this.render);
-        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this.showTime);
-        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this.hideTime);
-        this.listenTo(this.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this.onContainerChanged);
+        this.listenTo(this.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
+        this.listenTo(this.mediaControl, Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this.showTime);
+        this.listenTo(this.mediaControl, Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this.hideTime);
+        this.listenTo(this.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.onContainerChanged);
 
         if (this.mediaControlContainer) {
-          this.listenTo(this.mediaControlContainer, core.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.update);
-          this.listenTo(this.mediaControlContainer, core.Events.CONTAINER_TIMEUPDATE, this.updateDuration);
+          this.listenTo(this.mediaControlContainer, Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.update);
+          this.listenTo(this.mediaControlContainer, Events.CONTAINER_TIMEUPDATE, this.updateDuration);
         }
       }
     }, {
@@ -12097,7 +12097,7 @@
     }]);
 
     return SeekTime;
-  }(core.UICorePlugin);
+  }(UICorePlugin);
 
   var spinnerHTML = "<div data-bounce1></div><div data-bounce2></div><div data-bounce3></div>\n";
 
@@ -12137,18 +12137,18 @@
       _classCallCheck(this, SpinnerThreeBouncePlugin);
 
       _this = _super.call(this, container);
-      _this.template = core.template(spinnerHTML);
+      _this.template = tmpl(spinnerHTML);
       _this.showTimeout = null;
 
-      _this.listenTo(_this.container, core.Events.CONTAINER_STATE_BUFFERING, _this.onBuffering);
+      _this.listenTo(_this.container, Events.CONTAINER_STATE_BUFFERING, _this.onBuffering);
 
-      _this.listenTo(_this.container, core.Events.CONTAINER_STATE_BUFFERFULL, _this.onBufferFull);
+      _this.listenTo(_this.container, Events.CONTAINER_STATE_BUFFERFULL, _this.onBufferFull);
 
-      _this.listenTo(_this.container, core.Events.CONTAINER_STOP, _this.onStop);
+      _this.listenTo(_this.container, Events.CONTAINER_STOP, _this.onStop);
 
-      _this.listenTo(_this.container, core.Events.CONTAINER_ENDED, _this.onStop);
+      _this.listenTo(_this.container, Events.CONTAINER_ENDED, _this.onStop);
 
-      _this.listenTo(_this.container, core.Events.CONTAINER_ERROR, _this.onStop);
+      _this.listenTo(_this.container, Events.CONTAINER_ERROR, _this.onStop);
 
       _this.render();
 
@@ -12201,7 +12201,7 @@
     }]);
 
     return SpinnerThreeBouncePlugin;
-  }(core.UIContainerPlugin);
+  }(UIContainerPlugin);
 
   var StatsPlugin = /*#__PURE__*/function (_ContainerPlugin) {
     _inherits(StatsPlugin, _ContainerPlugin);
@@ -12239,15 +12239,15 @@
     _createClass(StatsPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container.playback, core.Events.PLAYBACK_PLAY, this.onPlay);
-        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_DESTROYED, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
-        this.listenTo(this.container, core.Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
-        this.listenTo(this.container, core.Events.CONTAINER_STATS_ADD, this.onStatsAdd);
-        this.listenTo(this.container, core.Events.CONTAINER_BITRATE, this.onStatsAdd);
-        this.listenTo(this.container.playback, core.Events.PLAYBACK_STATS_ADD, this.onStatsAdd);
+        this.listenTo(this.container.playback, Events.PLAYBACK_PLAY, this.onPlay);
+        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_DESTROYED, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERING, this.onBuffering);
+        this.listenTo(this.container, Events.CONTAINER_STATE_BUFFERFULL, this.onBufferFull);
+        this.listenTo(this.container, Events.CONTAINER_STATS_ADD, this.onStatsAdd);
+        this.listenTo(this.container, Events.CONTAINER_BITRATE, this.onStatsAdd);
+        this.listenTo(this.container.playback, Events.PLAYBACK_STATS_ADD, this.onStatsAdd);
       }
     }, {
       key: "setInitialAttrs",
@@ -12314,7 +12314,7 @@
     }, {
       key: "onStatsAdd",
       value: function onStatsAdd(metric) {
-        core.$.extend(this.externalMetrics, metric);
+        zepto.extend(this.externalMetrics, metric);
       }
     }, {
       key: "getStats",
@@ -12325,7 +12325,7 @@
           rebufferingTime: this.isRebuffering() ? this.rebufferingTime + this.getRebufferingTime() : this.rebufferingTime,
           watchingTime: this.isRebuffering() ? this.getWatchingTime() - this.getRebufferingTime() : this.getWatchingTime()
         };
-        core.$.extend(metrics, this.externalMetrics);
+        zepto.extend(metrics, this.externalMetrics);
         return metrics;
       }
     }, {
@@ -12336,7 +12336,7 @@
     }]);
 
     return StatsPlugin;
-  }(core.ContainerPlugin);
+  }(ContainerPlugin);
 
   var watermarkHTML = "<div class=\"clappr-watermark\" data-watermark data-watermark-<%=position %>\n  style=\"opacity:<%=opacity %>; transform: translate(<%=nudge.x %>px, <%=nudge.y %>px)\">\n<% if(typeof imageLink !== 'undefined') { %>\n<a target=\"_blank\" href=\"<%= imageLink %>\" onclick=\"(event) => event.stopPropagation();\">\n<% } %>\n<img src=\"<%= imageUrl %>\">\n<% if(typeof imageLink !== 'undefined') { %>\n</a>\n<% } %>\n</div>\n";
 
@@ -12380,7 +12380,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(watermarkHTML);
+        return tmpl(watermarkHTML);
       }
     }]);
 
@@ -12399,13 +12399,13 @@
     _createClass(WaterMarkPlugin, [{
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenTo(this.container, core.Events.CONTAINER_PLAY, this.onPlay);
-        this.listenTo(this.container, core.Events.CONTAINER_PAUSE, this.onPause);
-        this.listenTo(this.container, core.Events.CONTAINER_STOP, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_ENDED, this.onStop);
-        this.listenTo(this.container, core.Events.CONTAINER_OPTIONS_CHANGE, this.configure);
-        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_HIDE, this.resetBehavior);
-        this.listenTo(this.container, core.Events.CONTAINER_MEDIACONTROL_SHOW, this.executeBehavior);
+        this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
+        this.listenTo(this.container, Events.CONTAINER_PAUSE, this.onPause);
+        this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_ENDED, this.onStop);
+        this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.configure);
+        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_HIDE, this.resetBehavior);
+        this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_SHOW, this.executeBehavior);
       }
     }, {
       key: "configure",
@@ -12533,7 +12533,7 @@
     }]);
 
     return WaterMarkPlugin;
-  }(core.UIContainerPlugin);
+  }(UIContainerPlugin);
   var Plugins = {
     ClickToPause: ClickToPausePlugin,
     ClosedCaptions: ClosedCaptions$1,

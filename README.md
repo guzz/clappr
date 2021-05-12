@@ -15,9 +15,9 @@ Clappr is an extensible media player for the web. Your architecture is projected
 
 Clappr uses by default the [HTMLVideoElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement) which guarantees support to many platforms. You have the possibility to extends the default HTML5 playback or the playback interface to create one new media support just like a plugin!
 
-Clappr is a composition of two other projects: [@clappr/core](https://github.com/clappr/clappr-core) and [@clappr/plugins](https://github.com/clappr/clappr-plugins).
+Clappr is a composition of two other projects: [@guzzj/clappr-core](https://github.com/clappr/clappr-core) and [@clappr/plugins](https://github.com/clappr/clappr-plugins).
 
-The `@clappr/core` contains the basic functionalities from Clappr (plugin architecture, class abstractions, public interfaces, events handlers and etc) and the `@clappr/plugins` are the repository where the plugins maintained by the Clappr team lives. More info about those projects into your repositories.
+The `@guzzj/clappr-core` contains the basic functionalities from Clappr (plugin architecture, class abstractions, public interfaces, events handlers and etc) and the `@clappr/plugins` are the repository where the plugins maintained by the Clappr team lives. More info about those projects into your repositories.
 
 All Clappr projects are written in `*.js` using the latest features of [ECMAScript](http://www.ecma-international.org/ecma-262/).
 
@@ -65,11 +65,11 @@ Now, create the player:
 
 :books: API Documentation
 ---
-You can check the current API doc via `@clappr/core` [here](https://github.com/clappr/clappr-core#books-api-documentation).
+You can check the current API doc via `@guzzj/clappr-core` [here](https://github.com/clappr/clappr-core#books-api-documentation).
 
 :hammer_and_wrench: Configuration
 ---
-You can check the embed parameters supported by `@clappr/core` [here](https://github.com/clappr/clappr-core#hammer_and_wrench-configuration).
+You can check the embed parameters supported by `@guzzj/clappr-core` [here](https://github.com/clappr/clappr-core#hammer_and_wrench-configuration).
 
 :electric_plug: Built-in Plugins
 ---
