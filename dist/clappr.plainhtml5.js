@@ -4,29 +4,18 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Clappr = factory());
 }(this, (function () { 'use strict';
 
-  function _defineProperty$2(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
   function ownKeys$2(object, enumerableOnly) {
     var keys = Object.keys(object);
 
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
+
+      if (enumerableOnly) {
+        symbols = symbols.filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+      }
+
       keys.push.apply(keys, symbols);
     }
 
@@ -51,6 +40,21 @@
     }
 
     return target;
+  }
+
+  function _defineProperty$2(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
   }
 
   function _typeof$1(obj) {
@@ -2994,6 +2998,15 @@
     window.setTimeout(fn, 1000 / 60);
   }).bind(window);
   var cancelAnimationFrame = (window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout).bind(window);
+  function isMobile() {
+    var navString = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navString)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   function assign(obj, source) {
     if (source) {
       for (var prop in source) {
@@ -6174,7 +6187,7 @@
     return ContainerFactory;
   }(BaseObject);
 
-  var css_248z$1$1 = "[data-player] {\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  transform: translate3d(0, 0, 0);\n  position: relative;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-style: normal;\n  font-weight: normal;\n  text-align: center;\n  overflow: hidden;\n  font-size: 100%;\n  font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n  text-shadow: 0 0 0;\n  box-sizing: border-box; }\n  [data-player]:focus {\n    outline: 0; }\n  [data-player] * {\n    box-sizing: inherit; }\n  [data-player] > * {\n    float: none;\n    max-width: none; }\n  [data-player] > div {\n    display: block; }\n  [data-player].fullscreen {\n    width: 100% !important;\n    height: 100% !important;\n    top: 0;\n    left: 0; }\n  [data-player].nocursor {\n    cursor: none; }\n\n.clappr-style {\n  display: none !important; }\n";
+  var css_248z$1$1 = "@import url(\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap\");\n[data-player] {\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-rendering: optimizeLegibility;\n  transform: translate3d(0, 0, 0);\n  position: relative;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-style: normal;\n  font-weight: normal;\n  text-align: center;\n  overflow: hidden;\n  font-size: 100%;\n  font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n  text-shadow: 0 0 0;\n  box-sizing: border-box; }\n  [data-player]:focus {\n    outline: 0; }\n  [data-player] * {\n    box-sizing: inherit; }\n  [data-player] > * {\n    float: none;\n    max-width: none; }\n  [data-player] > div {\n    display: block; }\n  [data-player].fullscreen {\n    width: 100% !important;\n    height: 100% !important;\n    top: 0;\n    left: 0; }\n  [data-player].nocursor {\n    cursor: none; }\n\n.clappr-style {\n  display: none !important; }\n";
 
   var css_248z$2$1 = "[data-player] div, [data-player] span, [data-player] applet, [data-player] object, [data-player] iframe,\n[data-player] h1, [data-player] h2, [data-player] h3, [data-player] h4, [data-player] h5, [data-player] h6, [data-player] p, [data-player] blockquote, [data-player] pre,\n[data-player] a, [data-player] abbr, [data-player] acronym, [data-player] address, [data-player] big, [data-player] cite, [data-player] code,\n[data-player] del, [data-player] dfn, [data-player] em, [data-player] img, [data-player] ins, [data-player] kbd, [data-player] q, [data-player] s, [data-player] samp,\n[data-player] small, [data-player] strike, [data-player] strong, [data-player] sub, [data-player] sup, [data-player] tt, [data-player] var,\n[data-player] b, [data-player] u, [data-player] i, [data-player] center,\n[data-player] dl, [data-player] dt, [data-player] dd, [data-player] ol, [data-player] ul, [data-player] li,\n[data-player] fieldset, [data-player] form, [data-player] label, [data-player] legend,\n[data-player] table, [data-player] caption, [data-player] tbody, [data-player] tfoot, [data-player] thead, [data-player] tr, [data-player] th, [data-player] td,\n[data-player] article, [data-player] aside, [data-player] canvas, [data-player] details, [data-player] embed,\n[data-player] figure, [data-player] figcaption, [data-player] footer, [data-player] header, [data-player] hgroup,\n[data-player] menu, [data-player] nav, [data-player] output, [data-player] ruby, [data-player] section, [data-player] summary,\n[data-player] time, [data-player] mark, [data-player] audio, [data-player] video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font: inherit;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n[data-player] table {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n[data-player] caption, [data-player] th, [data-player] td {\n  text-align: left;\n  font-weight: normal;\n  vertical-align: middle; }\n\n[data-player] q, [data-player] blockquote {\n  quotes: none; }\n  [data-player] q:before, [data-player] q:after, [data-player] blockquote:before, [data-player] blockquote:after {\n    content: \"\";\n    content: none; }\n\n[data-player] a img {\n  border: none; }\n";
 
@@ -6192,6 +6205,11 @@
     var _super = _createSuper$1(Core);
 
     _createClass$1(Core, [{
+      key: "isMobile",
+      get: function get() {
+        return isMobile();
+      }
+    }, {
       key: "events",
       get: function get() {
         return {
@@ -6846,7 +6864,7 @@
       plugins: {},
       playbacks: []
     };
-    var currentVersion = "0.4.18";
+    var currentVersion = "0.4.20";
     return /*#__PURE__*/function () {
       _createClass$1(Loader, null, [{
         key: "checkVersionSupport",
@@ -8017,7 +8035,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }, {
@@ -8828,7 +8846,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }, {
@@ -8877,7 +8895,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }, {
@@ -8963,7 +8981,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }, {
@@ -9113,7 +9131,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }]);
@@ -9270,7 +9288,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.18"
+          min: "0.4.20"
         };
       }
     }]);
@@ -9279,7 +9297,7 @@
   }(CorePlugin);
 
   // Copyright 2014 Globo.com Player authors. All rights reserved.
-  var version$1 = "0.4.18"; // Built-in Plugins/Playbacks
+  var version$1 = "0.4.20"; // Built-in Plugins/Playbacks
 
   Loader.registerPlugin(Strings);
   Loader.registerPlugin(SourcesPlugin);
@@ -9312,6 +9330,44 @@
     template: tmpl,
     $: zepto
   };
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+
+      if (enumerableOnly) {
+        symbols = symbols.filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+      }
+
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -9366,40 +9422,6 @@
     return obj;
   }
 
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-  }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(Object(source), true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-    }
-
-    return target;
-  }
-
   function _inherits(subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
       throw new TypeError("Super expression must either be null or a function");
@@ -9437,7 +9459,7 @@
     if (typeof Proxy === "function") return true;
 
     try {
-      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
       return true;
     } catch (e) {
       return false;
@@ -9514,6 +9536,12 @@
 
     var _super = _createSuper(ClickToPausePlugin);
 
+    function ClickToPausePlugin(container) {
+      _classCallCheck(this, ClickToPausePlugin);
+
+      return _super.call(this, container);
+    }
+
     _createClass(ClickToPausePlugin, [{
       key: "name",
       get: function get() {
@@ -9523,18 +9551,10 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
-    }]);
-
-    function ClickToPausePlugin(container) {
-      _classCallCheck(this, ClickToPausePlugin);
-
-      return _super.call(this, container);
-    }
-
-    _createClass(ClickToPausePlugin, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.container, Events.CONTAINER_CLICK, this.click);
@@ -9592,13 +9612,28 @@
     }
   }
 
-  var css_248z = ".cc-controls[data-cc-controls] {\n  float: right;\n  position: relative;\n  display: none; }\n  .cc-controls[data-cc-controls].available {\n    display: block; }\n  .cc-controls[data-cc-controls] .cc-button {\n    padding: 6px !important; }\n    .cc-controls[data-cc-controls] .cc-button.enabled {\n      display: block;\n      opacity: 1.0; }\n      .cc-controls[data-cc-controls] .cc-button.enabled:hover {\n        opacity: 1.0;\n        text-shadow: none; }\n  .cc-controls[data-cc-controls] > ul {\n    list-style-type: none;\n    position: absolute;\n    bottom: 25px;\n    border: 1px solid black;\n    display: none;\n    background-color: #e6e6e6; }\n  .cc-controls[data-cc-controls] li {\n    font-size: 10px; }\n    .cc-controls[data-cc-controls] li[data-title] {\n      background-color: #c3c2c2;\n      padding: 5px; }\n    .cc-controls[data-cc-controls] li a {\n      color: #444;\n      padding: 2px 10px;\n      display: block;\n      text-decoration: none; }\n      .cc-controls[data-cc-controls] li a:hover {\n        background-color: #555;\n        color: white; }\n        .cc-controls[data-cc-controls] li a:hover a {\n          color: white;\n          text-decoration: none; }\n    .cc-controls[data-cc-controls] li.current a {\n      color: #f00; }\n";
-  styleInject(css_248z);
+  var css_248z$7 = ".cc-controls[data-cc-controls] {\n  float: right;\n  position: relative;\n  display: none; }\n  .cc-controls[data-cc-controls].available {\n    display: block; }\n  .cc-controls[data-cc-controls] .cc-button {\n    margin: 0 !important;\n    padding: 0 !important;\n    width: 20px !important; }\n    .cc-controls[data-cc-controls] .cc-button.enabled {\n      display: block;\n      opacity: 1.0; }\n      .cc-controls[data-cc-controls] .cc-button.enabled:hover {\n        opacity: 1.0;\n        text-shadow: none; }\n  .cc-controls[data-cc-controls] > ul {\n    list-style-type: none;\n    position: absolute;\n    bottom: 25px;\n    border: 1px solid black;\n    display: none;\n    background-color: #e6e6e6; }\n  .cc-controls[data-cc-controls] li {\n    font-size: 10px; }\n    .cc-controls[data-cc-controls] li[data-title] {\n      background-color: #c3c2c2;\n      padding: 5px; }\n    .cc-controls[data-cc-controls] li a {\n      color: #444;\n      padding: 2px 10px;\n      display: block;\n      text-decoration: none; }\n      .cc-controls[data-cc-controls] li a:hover {\n        background-color: #555;\n        color: white; }\n        .cc-controls[data-cc-controls] li a:hover a {\n          color: white;\n          text-decoration: none; }\n    .cc-controls[data-cc-controls] li.current a {\n      color: #f00; }\n";
+  styleInject(css_248z$7);
 
   var ClosedCaptions$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(ClosedCaptions, _UICorePlugin);
 
     var _super = _createSuper(ClosedCaptions);
+
+    function ClosedCaptions(core) {
+      var _this;
+
+      _classCallCheck(this, ClosedCaptions);
+
+      _this = _super.call(this, core);
+      var config = core.options.closedCaptionsConfig;
+      _this._title = config && config.title ? config.title : null;
+      _this._ariaLabel = config && config.ariaLabel ? config.ariaLabel : 'cc-button';
+      _this._labelCb = config && config.labelCallback && typeof config.labelCallback === 'function' ? config.labelCallback : function (track) {
+        return track.name;
+      };
+      return _this;
+    }
 
     _createClass(ClosedCaptions, [{
       key: "name",
@@ -9609,7 +9644,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -9633,24 +9668,7 @@
           'data-cc-controls': ''
         };
       }
-    }]);
-
-    function ClosedCaptions(core) {
-      var _this;
-
-      _classCallCheck(this, ClosedCaptions);
-
-      _this = _super.call(this, core);
-      var config = core.options.closedCaptionsConfig;
-      _this._title = config && config.title ? config.title : null;
-      _this._ariaLabel = config && config.ariaLabel ? config.ariaLabel : 'cc-button';
-      _this._labelCb = config && config.labelCallback && typeof config.labelCallback === 'function' ? config.labelCallback : function (track) {
-        return track.name;
-      };
-      return _this;
-    }
-
-    _createClass(ClosedCaptions, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
@@ -9767,13 +9785,25 @@
 
   var dvrHTML = "<div class=\"live-info\"><%= live %></div>\n<button type=\"button\" class=\"live-button\" aria-label=\"<%= backToLive %>\"><%= backToLive %></button>\n";
 
-  var css_248z$1 = ".dvr-controls[data-dvr-controls] {\n  display: inline-block;\n  float: left;\n  color: #fff;\n  line-height: 32px;\n  font-size: 10px;\n  font-weight: bold;\n  margin-left: 6px; }\n  .dvr-controls[data-dvr-controls] .live-info {\n    cursor: default;\n    font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n    text-transform: uppercase; }\n    .dvr-controls[data-dvr-controls] .live-info:before {\n      content: \"\";\n      display: inline-block;\n      position: relative;\n      width: 7px;\n      height: 7px;\n      border-radius: 3.5px;\n      margin-right: 3.5px;\n      background-color: #ff0101; }\n    .dvr-controls[data-dvr-controls] .live-info.disabled {\n      opacity: 0.3; }\n      .dvr-controls[data-dvr-controls] .live-info.disabled:before {\n        background-color: #fff; }\n  .dvr-controls[data-dvr-controls] .live-button {\n    cursor: pointer;\n    outline: none;\n    display: none;\n    border: 0;\n    color: #fff;\n    background-color: transparent;\n    height: 32px;\n    padding: 0;\n    opacity: 0.7;\n    font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n    text-transform: uppercase;\n    transition: all 0.1s ease; }\n    .dvr-controls[data-dvr-controls] .live-button:before {\n      content: \"\";\n      display: inline-block;\n      position: relative;\n      width: 7px;\n      height: 7px;\n      border-radius: 3.5px;\n      margin-right: 3.5px;\n      background-color: #fff; }\n    .dvr-controls[data-dvr-controls] .live-button:hover {\n      opacity: 1;\n      text-shadow: rgba(255, 255, 255, 0.75) 0 0 5px; }\n\n.dvr .dvr-controls[data-dvr-controls] .live-info {\n  display: none; }\n\n.dvr .dvr-controls[data-dvr-controls] .live-button {\n  display: block; }\n\n.dvr.media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n  background-color: #005aff; }\n\n.media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n  background-color: #ff0101; }\n";
-  styleInject(css_248z$1);
+  var css_248z$6 = ".dvr-controls[data-dvr-controls] {\n  display: inline-block;\n  float: left;\n  color: #fff;\n  line-height: 32px;\n  font-size: 10px;\n  font-weight: bold;\n  margin-left: 6px; }\n  .dvr-controls[data-dvr-controls] .live-info {\n    cursor: default;\n    font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n    text-transform: uppercase; }\n    .dvr-controls[data-dvr-controls] .live-info:before {\n      content: \"\";\n      display: inline-block;\n      position: relative;\n      width: 7px;\n      height: 7px;\n      border-radius: 3.5px;\n      margin-right: 3.5px;\n      background-color: #ff0101; }\n    .dvr-controls[data-dvr-controls] .live-info.disabled {\n      opacity: 0.3; }\n      .dvr-controls[data-dvr-controls] .live-info.disabled:before {\n        background-color: #fff; }\n  .dvr-controls[data-dvr-controls] .live-button {\n    cursor: pointer;\n    outline: none;\n    display: none;\n    border: 0;\n    color: #fff;\n    background-color: transparent;\n    height: 32px;\n    padding: 0;\n    opacity: 0.7;\n    font-family: \"Roboto\", \"Open Sans\", Arial, sans-serif;\n    text-transform: uppercase;\n    transition: all 0.1s ease; }\n    .dvr-controls[data-dvr-controls] .live-button:before {\n      content: \"\";\n      display: inline-block;\n      position: relative;\n      width: 7px;\n      height: 7px;\n      border-radius: 3.5px;\n      margin-right: 3.5px;\n      background-color: #fff; }\n    .dvr-controls[data-dvr-controls] .live-button:hover {\n      opacity: 1;\n      text-shadow: rgba(255, 255, 255, 0.75) 0 0 5px; }\n\n.dvr .dvr-controls[data-dvr-controls] .live-info {\n  display: none; }\n\n.dvr .dvr-controls[data-dvr-controls] .live-button {\n  display: block; }\n\n.dvr.media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n  background-color: #005aff; }\n\n.media-control.live[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n  background-color: #ff0101; }\n";
+  styleInject(css_248z$6);
 
   var DVRControls$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(DVRControls, _UICorePlugin);
 
     var _super = _createSuper(DVRControls);
+
+    function DVRControls(core) {
+      var _this;
+
+      _classCallCheck(this, DVRControls);
+
+      _this = _super.call(this, core);
+
+      _this.settingsUpdate();
+
+      return _this;
+    }
 
     _createClass(DVRControls, [{
       key: "template",
@@ -9789,7 +9819,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -9807,21 +9837,7 @@
           'data-dvr-controls': ''
         };
       }
-    }]);
-
-    function DVRControls(core) {
-      var _this;
-
-      _classCallCheck(this, DVRControls);
-
-      _this = _super.call(this, core);
-
-      _this.settingsUpdate();
-
-      return _this;
-    }
-
-    _createClass(DVRControls, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.bindCoreEvents();
@@ -9933,6 +9949,18 @@
     }
 
     _createClass(EndVideo, [{
+      key: "name",
+      get: function get() {
+        return 'end_video';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.containerChanged);
@@ -9955,18 +9983,6 @@
         var exitOnEnd = typeof this.core.options.exitFullscreenOnEnd === 'undefined' || this.core.options.exitFullscreenOnEnd;
         if (exitOnEnd && this.core.isFullscreen()) this.core.toggleFullscreen();
       }
-    }, {
-      key: "name",
-      get: function get() {
-        return 'end_video';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
     }]);
 
     return EndVideo;
@@ -9976,13 +9992,23 @@
 
   var templateHtml = "<div class=\"player-error-screen__content\" data-error-screen>\n  <% if (icon) { %>\n  <div class=\"player-error-screen__icon\" data-error-screen><%= icon %></div>\n  <% } %>\n  <div class=\"player-error-screen__title\" data-error-screen><%= title %></div>\n  <div class=\"player-error-screen__message\" data-error-screen><%= message %></div>\n  <div class=\"player-error-screen__code\" data-error-screen>Error code: <%= code %></div>\n  <div class=\"player-error-screen__reload\" data-error-screen><%= reloadIcon %></div>\n</div>\n";
 
-  var css_248z$2 = "div.player-error-screen {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  color: #CCCACA;\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n  z-index: 2000;\n  display: flex !important;\n  flex-direction: column;\n  justify-content: center; }\n  div.player-error-screen__content[data-error-screen] {\n    font-size: 14px;\n    color: #CCCACA;\n    margin-top: 45px; }\n  div.player-error-screen__title[data-error-screen] {\n    font-weight: bold;\n    line-height: 30px;\n    font-size: 18px; }\n  div.player-error-screen__message[data-error-screen] {\n    width: 90%;\n    margin: 0 auto; }\n  div.player-error-screen__code[data-error-screen] {\n    font-size: 13px;\n    margin-top: 15px; }\n  div.player-error-screen__reload {\n    cursor: pointer;\n    width: 30px;\n    margin: 15px auto 0 !important; }\n";
-  styleInject(css_248z$2);
+  var css_248z$5 = "div.player-error-screen {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-rendering: optimizeLegibility;\n  color: #CCCACA;\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n  z-index: 2000;\n  display: flex !important;\n  flex-direction: column;\n  justify-content: center; }\n  div.player-error-screen__content[data-error-screen] {\n    font-size: 14px;\n    color: #CCCACA;\n    margin-top: 45px; }\n  div.player-error-screen__title[data-error-screen] {\n    font-weight: bold;\n    line-height: 30px;\n    font-size: 18px; }\n  div.player-error-screen__message[data-error-screen] {\n    width: 90%;\n    margin: 0 auto; }\n  div.player-error-screen__code[data-error-screen] {\n    font-size: 13px;\n    margin-top: 15px; }\n  div.player-error-screen__reload {\n    cursor: pointer;\n    width: 30px;\n    margin: 15px auto 0 !important; }\n";
+  styleInject(css_248z$5);
 
   var ErrorScreen$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(ErrorScreen, _UICorePlugin);
 
     var _super = _createSuper(ErrorScreen);
+
+    function ErrorScreen(core) {
+      var _this;
+
+      _classCallCheck(this, ErrorScreen);
+
+      _this = _super.call(this, core);
+      if (_this.options.disableErrorScreen) return _possibleConstructorReturn(_this, _this.disable());
+      return _this;
+    }
 
     _createClass(ErrorScreen, [{
       key: "name",
@@ -9993,7 +10019,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -10014,19 +10040,7 @@
           'data-error-screen': ''
         };
       }
-    }]);
-
-    function ErrorScreen(core) {
-      var _this;
-
-      _classCallCheck(this, ErrorScreen);
-
-      _this = _super.call(this, core);
-      if (_this.options.disableErrorScreen) return _possibleConstructorReturn(_this, _this.disable());
-      return _this;
-    }
-
-    _createClass(ErrorScreen, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.core, Events.ERROR, this.onError);
@@ -10104,9 +10118,9 @@
     return ErrorScreen;
   }(UICorePlugin);
 
-  var playIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M1.425.35L14.575 8l-13.15 7.65V.35z\"/>\n</svg>";
+  var playIcon = "<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   viewBox=\"0 0 16 16\">\n  <path\n     fill=\"#010101\"\n     d=\"M 8,4.175 14.285937,8 V 8 L 8,11.825 Z\"\n     id=\"path1\" />\n  <path\n     fill=\"#010101\"\n     d=\"M 1.7343592,0.35 8,4.175 v 7.65 L 1.7343592,15.65 Z\"\n     id=\"path2\" />\n</svg>";
 
-  var pauseIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 14.76H6.43V1.24H1.71v13.52zm7.86-13.52v13.52h4.716V1.24H9.573z\"/>\n</svg>";
+  var pauseIcon = "<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   viewBox=\"0 0 16 16\">\n  <path\n     fill=\"#010101\"\n     d=\"m 9.5730001,1.24 4.7129369,-0.00171 0,13.5221916 L 9.5730001,14.76 Z\"\n     id=\"path1\" />\n  <path\n     fill=\"#010101\"\n     d=\"m 1.7110001,1.24 h 4.72 v 13.52 h -4.72 z\"\n     id=\"path2\" />\n</svg>";
 
   var oldIcon = zepto('link[rel="shortcut icon"]');
 
@@ -10114,25 +10128,6 @@
     _inherits(Favicon, _CorePlugin);
 
     var _super = _createSuper(Favicon);
-
-    _createClass(Favicon, [{
-      key: "name",
-      get: function get() {
-        return 'favicon';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
-    }, {
-      key: "oldIcon",
-      get: function get() {
-        return oldIcon;
-      }
-    }]);
 
     function Favicon(core) {
       var _this;
@@ -10148,6 +10143,23 @@
     }
 
     _createClass(Favicon, [{
+      key: "name",
+      get: function get() {
+        return 'favicon';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
+      key: "oldIcon",
+      get: function get() {
+        return oldIcon;
+      }
+    }, {
       key: "configure",
       value: function configure() {
         if (this.core.options.changeFavicon) {
@@ -10244,20 +10256,6 @@
 
     var _super = _createSuper(GoogleAnalytics);
 
-    _createClass(GoogleAnalytics, [{
-      key: "name",
-      get: function get() {
-        return 'google_analytics';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
-    }]);
-
     function GoogleAnalytics(container) {
       var _this;
 
@@ -10278,6 +10276,18 @@
     }
 
     _createClass(GoogleAnalytics, [{
+      key: "name",
+      get: function get() {
+        return 'google_analytics';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
       key: "embedScript",
       value: function embedScript() {
         var _this2 = this;
@@ -10769,16 +10779,16 @@
     Kibo: Kibo
   };
 
-  var css_248z$3 = ".media-control-notransition {\n  transition: none !important; }\n\n.media-control[data-media-control] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 9999;\n  pointer-events: none; }\n  .media-control[data-media-control].dragging {\n    pointer-events: auto;\n    cursor: -webkit-grabbing !important;\n    cursor: grabbing !important;\n    cursor: url(\"closed-hand.cur\"), move; }\n    .media-control[data-media-control].dragging * {\n      cursor: -webkit-grabbing !important;\n      cursor: grabbing !important;\n      cursor: url(\"closed-hand.cur\"), move; }\n  .media-control[data-media-control] .media-control-background[data-background] {\n    position: absolute;\n    height: 40%;\n    width: 100%;\n    bottom: 0;\n    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));\n    will-change: transform, opacity;\n    transition: opacity 0.6s ease-out; }\n  .media-control[data-media-control] .media-control-icon {\n    line-height: 0;\n    letter-spacing: 0;\n    speak: none;\n    color: #fff;\n    opacity: 0.5;\n    vertical-align: middle;\n    text-align: left;\n    transition: all 0.1s ease; }\n  .media-control[data-media-control] .media-control-icon:hover {\n    color: white;\n    opacity: 0.75;\n    text-shadow: rgba(255, 255, 255, 0.8) 0 0 5px; }\n  .media-control[data-media-control].media-control-hide .media-control-background[data-background] {\n    opacity: 0; }\n  .media-control[data-media-control].media-control-hide .media-control-layer[data-controls] {\n    transform: translateY(50px); }\n    .media-control[data-media-control].media-control-hide .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n      opacity: 0; }\n  .media-control[data-media-control] .media-control-layer[data-controls] {\n    position: absolute;\n    transform: translateY(-7px);\n    bottom: 0;\n    width: 100%;\n    height: 32px;\n    font-size: 0;\n    vertical-align: middle;\n    pointer-events: auto;\n    transition: bottom 0.4s ease-out; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-left-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      left: 4px;\n      height: 100%; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-center-panel[data-media-control] {\n      height: 100%;\n      text-align: center;\n      line-height: 32px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-right-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      right: 4px;\n      height: 100%; }\n    .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button {\n      background-color: transparent;\n      border: 0;\n      margin: 0 6px;\n      padding: 0;\n      cursor: pointer;\n      display: inline-block;\n      width: 32px;\n      height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button svg {\n        width: 100%;\n        height: 22px; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button svg path {\n          fill: white; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button:focus {\n        outline: none; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-play] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-pause] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-stop] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-fullscreen] {\n        float: right;\n        background-color: transparent;\n        border: 0;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator] {\n        background-color: transparent;\n        border: 0;\n        cursor: default;\n        display: none;\n        float: right;\n        height: 100%; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled {\n          display: block;\n          opacity: 1.0; }\n          .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled:hover {\n            opacity: 1.0;\n            text-shadow: none; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playpause] {\n        float: left; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playstop] {\n        float: left; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-position], .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      display: inline-block;\n      font-size: 10px;\n      color: white;\n      cursor: default;\n      line-height: 32px;\n      position: relative; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-position] {\n      margin: 0 6px 0 7px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      color: rgba(255, 255, 255, 0.5);\n      margin-right: 6px; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration]:before {\n        content: \"|\";\n        margin-right: 7px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] {\n      position: absolute;\n      top: -20px;\n      left: 0;\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      height: 25px;\n      cursor: pointer; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] {\n        width: 100%;\n        height: 1px;\n        position: relative;\n        top: 12px;\n        background-color: #666666; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-1[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #c2c2c2;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #005aff;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0;\n          position: absolute;\n          top: -3px;\n          width: 5px;\n          height: 7px;\n          background-color: rgba(255, 255, 255, 0.5);\n          transition: opacity 0.1s ease; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n        opacity: 1; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled {\n        cursor: default; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n        position: absolute;\n        transform: translateX(-50%);\n        top: 2px;\n        left: 0;\n        width: 20px;\n        height: 20px;\n        opacity: 1;\n        transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] .bar-scrubber-icon[data-seekbar] {\n          position: absolute;\n          left: 6px;\n          top: 6px;\n          width: 8px;\n          height: 8px;\n          border-radius: 10px;\n          box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);\n          background-color: white; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] {\n      float: right;\n      display: inline-block;\n      height: 32px;\n      cursor: pointer;\n      margin: 0 6px;\n      box-sizing: border-box; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] {\n        float: left;\n        bottom: 0; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] {\n          background-color: transparent;\n          border: 0;\n          box-sizing: content-box;\n          width: 32px;\n          height: 32px;\n          opacity: 0.5; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume]:hover {\n            opacity: 0.75; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg {\n            height: 24px;\n            position: relative;\n            top: 3px; }\n            .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {\n              fill: white; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume].muted svg {\n            margin-left: 2px; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] {\n        float: left;\n        position: relative;\n        overflow: hidden;\n        top: 6px;\n        width: 42px;\n        height: 18px;\n        padding: 3px 0;\n        transition: width .2s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] {\n          height: 1px;\n          position: relative;\n          top: 7px;\n          margin: 0 3px;\n          background-color: #666666; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-1[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #c2c2c2;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-2[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #005aff;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-hover[data-volume] {\n            opacity: 0;\n            position: absolute;\n            top: -3px;\n            width: 5px;\n            height: 7px;\n            background-color: rgba(255, 255, 255, 0.5);\n            transition: opacity 0.1s ease; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] {\n          position: absolute;\n          transform: translateX(-50%);\n          top: 0px;\n          left: 0;\n          width: 20px;\n          height: 20px;\n          opacity: 1;\n          transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] .bar-scrubber-icon[data-volume] {\n            position: absolute;\n            left: 6px;\n            top: 6px;\n            width: 8px;\n            height: 8px;\n            border-radius: 10px;\n            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);\n            background-color: white; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume] {\n          float: left;\n          width: 4px;\n          padding-left: 2px;\n          height: 12px;\n          opacity: 0.5;\n          box-shadow: inset 2px 0 0 white;\n          transition: transform .2s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume].fill {\n            box-shadow: inset 2px 0 0 #fff;\n            opacity: 1; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:nth-of-type(1) {\n            padding-left: 0; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:hover {\n            transform: scaleY(1.5); }\n  .media-control[data-media-control].w320 .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume].volume-bar-hide {\n    width: 0;\n    height: 12px;\n    top: 9px;\n    padding: 0; }\n";
-  styleInject(css_248z$3);
+  var css_248z$4 = "@import url(\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap\");\n.media-control-notransition {\n  transition: none !important; }\n\n.media-control[data-media-control] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 9999;\n  pointer-events: none; }\n  .media-control[data-media-control] .media-control-background[data-background] {\n    position: absolute;\n    height: 40%;\n    width: 100%;\n    bottom: 0;\n    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));\n    will-change: transform, opacity;\n    transition: opacity 0.6s ease-out; }\n  .media-control[data-media-control] .media-control-icon {\n    line-height: 0;\n    letter-spacing: 0;\n    speak: none;\n    color: #fff;\n    opacity: 0.5;\n    vertical-align: middle;\n    text-align: left;\n    transition: all 0.1s ease; }\n  .media-control[data-media-control] .media-control-icon:hover {\n    color: white;\n    opacity: 1;\n    text-shadow: rgba(255, 255, 255, 0.8) 0 0 5px; }\n  .media-control[data-media-control].media-control-hide .media-control-background[data-background] {\n    opacity: 0; }\n  .media-control[data-media-control].media-control-hide .media-control-layer[data-controls] {\n    transform: translateY(50px); }\n    .media-control[data-media-control].media-control-hide .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n      opacity: 0; }\n    .media-control[data-media-control].media-control-hide .media-control-layer[data-controls] .bar-container[data-volume] {\n      display: none; }\n  .media-control[data-media-control] .media-control-layer[data-controls] {\n    position: absolute;\n    transform: translateY(-7px);\n    bottom: 0;\n    width: 100%;\n    height: 32px;\n    font-size: 0;\n    vertical-align: middle;\n    pointer-events: auto;\n    transition: bottom 0.4s ease-out; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-left-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      left: 4px;\n      height: 100%; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-center-panel[data-media-control] {\n      height: 100%;\n      text-align: center;\n      line-height: 32px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-right-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      right: 4px;\n      height: 100%; }\n    .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button {\n      background-color: transparent;\n      border: 0;\n      margin: 0 6px;\n      padding: 0;\n      cursor: pointer;\n      display: inline-block;\n      width: 32px;\n      height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button svg {\n        width: 100%;\n        height: 22px; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button svg path {\n          fill: white; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button:focus {\n        outline: none; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-play] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-pause] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-stop] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-fullscreen] {\n        float: right;\n        background-color: transparent;\n        border: 0;\n        height: 100%; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator] {\n        background-color: transparent;\n        border: 0;\n        cursor: default;\n        display: none;\n        float: right;\n        height: 100%; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled {\n          display: block;\n          opacity: 1.0; }\n          .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled:hover {\n            opacity: 1.0;\n            text-shadow: none; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playpause] {\n        float: left; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playpause] path {\n          transition: .2s ease !important; }\n      .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playstop] {\n        float: left; }\n        .media-control[data-media-control] .media-control-layer[data-controls] button.media-control-button[data-playstop] path {\n          transition: .2s ease !important; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-position], .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      display: inline-block;\n      font-size: 14px;\n      font-weight: 400;\n      color: white;\n      cursor: default;\n      line-height: 32px;\n      position: relative;\n      letter-spacing: 1px;\n      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-position] {\n      margin: 0 6px 0 7px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      color: rgba(255, 255, 255, 0.5);\n      margin-right: 6px; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .media-control-indicator[data-duration]:before {\n        content: \"|\";\n        margin-right: 7px; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] {\n      position: absolute;\n      top: -20px;\n      left: 0;\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      height: 25px;\n      cursor: pointer;\n      transition: opacity .2s ease; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] {\n        width: 100%;\n        height: 1px;\n        position: relative;\n        top: 12px;\n        background-color: #666666;\n        transition: height .3s ease, top .3s ease, box-shadow .3s ease; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-1[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #c2c2c2;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #005aff;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0;\n          position: absolute;\n          top: 0px;\n          width: 5px;\n          height: 0px;\n          background-color: yellow;\n          transition: opacity 0.1s ease, height .3s ease; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n        position: absolute;\n        transform: translateX(-50%);\n        top: 2px;\n        left: 0;\n        width: 20px;\n        height: 20px;\n        opacity: 1;\n        transition: all 0.1s ease-out; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] .bar-scrubber-icon[data-seekbar] {\n          position: absolute;\n          left: 10px;\n          top: 10px;\n          width: 0px;\n          height: 0px;\n          border-radius: 10px;\n          box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);\n          background-color: white;\n          transition: all .3s ease; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-background[data-seekbar] {\n        height: 3px;\n        top: 11px;\n        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          height: 3px;\n          opacity: 1; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-scrubber[data-seekbar] .bar-scrubber-icon[data-seekbar] {\n        left: 6px;\n        top: 6px;\n        width: 8px;\n        height: 8px;\n        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2); }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-scrubber[data-seekbar]:hover .bar-scrubber-icon[data-seekbar] {\n        left: 5px;\n        top: 5px;\n        width: 10px;\n        height: 10px;\n        box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2); }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled {\n        cursor: default; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar].hide {\n        opacity: 0; }\n    .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] {\n      float: left;\n      display: inline-block;\n      height: 32px;\n      cursor: pointer;\n      margin: 0 3px 0 0;\n      box-sizing: border-box; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] {\n        float: left;\n        bottom: 0; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] {\n          background-color: transparent;\n          border: 0;\n          box-sizing: content-box;\n          width: 32px;\n          height: 32px;\n          opacity: 0.5;\n          display: flex;\n          justify-content: center; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume]:hover {\n            opacity: 1; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg {\n            height: 26px;\n            position: relative;\n            top: 3px; }\n            .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {\n              fill: white; }\n      .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] {\n        position: absolute;\n        transform: rotate(-90deg) translate(59px, -33px);\n        top: 0;\n        height: 20px;\n        width: 100px;\n        padding: 4px 10px;\n        transition: opacity .2s ease; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] {\n          overflow: hidden;\n          margin: 0;\n          height: 6px;\n          top: 3px;\n          border-radius: 6px;\n          position: relative;\n          background-color: #aaaaaa;\n          box-shadow: 0 0 3px;\n          transition: height .2s ease, top .2s ease, border-radius .2s ease; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-1[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #c2c2c2;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-2[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #005aff;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-hover[data-volume] {\n            opacity: 0;\n            position: absolute;\n            top: -3px;\n            width: 5px;\n            height: 7px;\n            background-color: rgba(255, 255, 255, 0.5);\n            transition: opacity 0.1s ease; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] {\n          position: absolute;\n          transform: translateX(-50%);\n          top: 0px;\n          left: 0;\n          width: 20px;\n          height: 20px;\n          transition: all 0.1s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] .bar-scrubber-icon[data-volume] {\n            width: 12px;\n            height: 12px;\n            left: 4px;\n            top: 4px;\n            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);\n            position: absolute;\n            border-radius: 10px;\n            background-color: white; }\n        .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume] {\n          float: left;\n          width: 4px;\n          padding-left: 2px;\n          height: 12px;\n          opacity: 0.5;\n          box-shadow: inset 2px 0 0 white;\n          transition: transform .2s ease-out; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume].fill {\n            box-shadow: inset 2px 0 0 #fff;\n            opacity: 1; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:nth-of-type(1) {\n            padding-left: 0; }\n          .media-control[data-media-control] .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:hover {\n            transform: scaleY(1.5); }\n    .media-control[data-media-control] .media-control-layer[data-controls].hover-select .media-control-icon {\n      opacity: .1; }\n      .media-control[data-media-control] .media-control-layer[data-controls].hover-select .media-control-icon:hover {\n        opacity: 1; }\n    .media-control[data-media-control] .media-control-layer[data-controls].hover-select .drawer-icon[data-volume].media-control-icon {\n      opacity: 1 !important; }\n  .media-control[data-media-control].w320 .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume].volume-bar-hide {\n    opacity: 0;\n    z-index: -1; }\n  .media-control[data-media-control].dragging {\n    pointer-events: auto;\n    cursor: -webkit-grabbing !important;\n    cursor: grabbing !important;\n    cursor: url(\"closed-hand.cur\"), move; }\n    .media-control[data-media-control].dragging * {\n      cursor: -webkit-grabbing !important;\n      cursor: grabbing !important;\n      cursor: url(\"closed-hand.cur\"), move; }\n    .media-control[data-media-control].dragging .bar-container[data-seekbar] .bar-background[data-seekbar] {\n      height: 3px !important;\n      top: 11px !important; }\n      .media-control[data-media-control].dragging .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-1[data-seekbar] {\n        transition: none !important; }\n      .media-control[data-media-control].dragging .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n        transition: none !important; }\n    .media-control[data-media-control].dragging .bar-scrubber {\n      transition: width .2s ease, height .2s ease !important; }\n      .media-control[data-media-control].dragging .bar-scrubber .bar-scrubber-icon {\n        width: 12px !important;\n        height: 12px !important;\n        left: 4px !important;\n        top: 4px !important;\n        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2) !important; }\n    .media-control[data-media-control].dragging .bar-background[data-volume] .bar-fill-2[data-volume] {\n      transition: none !important; }\n\ndiv[data-player] ::cue {\n  color: white;\n  background: transparent;\n  text-shadow: 0 0 3px black; }\n";
+  styleInject(css_248z$4);
 
-  var mediaControlHTML = "<div class=\"media-control-background\" data-background></div>\n<div class=\"media-control-layer\" data-controls>\n  <%  var renderBar = function(name) { %>\n      <div class=\"bar-container\" data-<%= name %>>\n        <div class=\"bar-background\" data-<%= name %>>\n          <div class=\"bar-fill-1\" data-<%= name %>></div>\n          <div class=\"bar-fill-2\" data-<%= name %>></div>\n          <div class=\"bar-hover\" data-<%= name %>></div>\n        </div>\n        <div class=\"bar-scrubber\" data-<%= name %>>\n          <div class=\"bar-scrubber-icon\" data-<%= name %>></div>\n        </div>\n      </div>\n  <%  }; %>\n  <%  var renderSegmentedBar = function(name, segments) {\n      segments = segments || 10; %>\n    <div class=\"bar-container\" data-<%= name %>>\n    <% for (var i = 0; i < segments; i++) { %>\n      <div class=\"segmented-bar-element\" data-<%= name %>></div>\n    <% } %>\n    </div>\n  <% }; %>\n  <% var renderDrawer = function(name, renderContent) { %>\n      <div class=\"drawer-container\" data-<%= name %>>\n        <div class=\"drawer-icon-container\" data-<%= name %>>\n          <div class=\"drawer-icon media-control-icon\" data-<%= name %>></div>\n          <span class=\"drawer-text\" data-<%= name %>></span>\n        </div>\n        <% renderContent(name); %>\n      </div>\n  <% }; %>\n  <% var renderIndicator = function(name) { %>\n      <div class=\"media-control-indicator\" data-<%= name %>></div>\n  <% }; %>\n  <% var renderButton = function(name) { %>\n    <button type=\"button\" class=\"media-control-button media-control-icon\" data-<%= name %> aria-label=\"<%= name %>\"></button>\n  <% }; %>\n  <%  var templates = {\n        bar: renderBar,\n        segmentedBar: renderSegmentedBar,\n      };\n      var render = function(settingsList) {\n        settingsList.forEach(function(setting) {\n          if(setting === \"seekbar\") {\n            renderBar(setting);\n          } else if (setting === \"volume\") {\n            renderDrawer(setting, settings.volumeBarTemplate ? templates[settings.volumeBarTemplate] : function(name) { return renderSegmentedBar(name); });\n          } else if (setting === \"duration\" || setting === \"position\") {\n            renderIndicator(setting);\n          } else {\n            renderButton(setting);\n          }\n        });\n      }; %>\n  <% if (settings.default && settings.default.length) { %>\n  <div class=\"media-control-center-panel\" data-media-control>\n    <% render(settings.default); %>\n  </div>\n  <% } %>\n  <% if (settings.left && settings.left.length) { %>\n  <div class=\"media-control-left-panel\" data-media-control>\n    <% render(settings.left); %>\n  </div>\n  <% } %>\n  <% if (settings.right && settings.right.length) { %>\n  <div class=\"media-control-right-panel\" data-media-control>\n    <% render(settings.right); %>\n  </div>\n  <% } %>\n</div>\n";
+  var mediaControlHTML = "<div class=\"media-control-background\" data-background></div>\n<div class=\"media-control-layer\" data-controls>\n  <%  var renderBar = function(name) { %>\n      <div class=\"bar-container\" data-<%= name %>>\n        <div class=\"bar-background\" data-<%= name %>>\n          <div class=\"bar-fill-1\" data-<%= name %>></div>\n          <div class=\"bar-fill-2\" data-<%= name %>></div>\n          <div class=\"bar-hover\" data-<%= name %>></div>\n        </div>\n        <div class=\"bar-scrubber\" data-<%= name %>>\n          <div class=\"bar-scrubber-icon\" data-<%= name %>></div>\n        </div>\n      </div>\n  <%  }; %>\n  <%  var renderSegmentedBar = function(name, segments) {\n      segments = segments || 10; %>\n    <div class=\"bar-container\" data-<%= name %>>\n    <% for (var i = 0; i < segments; i++) { %>\n      <div class=\"segmented-bar-element\" data-<%= name %>></div>\n    <% } %>\n    </div>\n  <% }; %>\n  <% var renderDrawer = function(name, renderContent) { %>\n      <div class=\"drawer-container\" data-<%= name %>>\n        <div class=\"drawer-icon-container\" data-<%= name %>>\n          <div class=\"drawer-icon media-control-icon\" data-<%= name %>></div>\n          <span class=\"drawer-text\" data-<%= name %>></span>\n        </div>\n        <% renderContent(name); %>\n      </div>\n  <% }; %>\n  <% var renderIndicator = function(name) { %>\n      <div class=\"media-control-indicator\" data-<%= name %>></div>\n  <% }; %>\n  <% var renderButton = function(name) { %>\n    <button type=\"button\" class=\"media-control-button media-control-icon\" data-<%= name %> aria-label=\"<%= name %>\"></button>\n  <% }; %>\n  <%  var render = function(settingsList) {\n        settingsList.forEach(function(setting) {\n          if(setting === \"seekbar\") {\n            renderBar(setting);\n          } else if (setting === \"volume\") {\n            renderDrawer(setting, function(name) { return renderBar(name); });\n          } else if (setting === \"duration\" || setting === \"position\") {\n            renderIndicator(setting);\n          } else {\n            renderButton(setting);\n          }\n        });\n      }; %>\n  <% if (settings.default && settings.default.length) { %>\n  <div class=\"media-control-center-panel\" data-media-control>\n    <% render(settings.default); %>\n  </div>\n  <% } %>\n  <% if (settings.left && settings.left.length) { %>\n  <div class=\"media-control-left-panel\" data-media-control>\n    <% render(settings.left); %>\n  </div>\n  <% } %>\n  <% if (settings.right && settings.right.length) { %>\n  <div class=\"media-control-right-panel\" data-media-control>\n    <% render(settings.right); %>\n  </div>\n  <% } %>\n</div>\n";
 
-  var stopIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 1.24h12.6v13.52h-12.6z\"/>\n</svg>";
+  var stopIcon = "<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   viewBox=\"0 0 16 16\">\n  <path\n     fill=\"#010101\"\n     d=\"M 8,1.24 14.285937,1.23829 V 14.760482 L 8,14.76 Z\"\n     id=\"path1\" />\n  <path\n     fill=\"#010101\"\n     d=\"M 1.7110001,1.24 H 8 V 14.76 H 1.7110001 Z\"\n     id=\"path2\" />\n</svg>";
 
-  var volumeIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M11.5 11h-.002v1.502L7.798 10H4.5V6h3.297l3.7-2.502V4.5h.003V11zM11 4.49L7.953 6.5H5v3h2.953L11 11.51V4.49z\"/>\n</svg>";
+  var volumeIcon = "<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   viewBox=\"0 0 16 16\">\n  <path\n     id=\"path994\"\n     d=\"M 9.6605713,5.1932361 9.2998766,5.6562899 v 4.6776551 l 0.3314494,0.466304 c 0,0 1.285177,-0.979384 1.285177,-2.7799478 0,-1.8005637 -1.2559317,-2.8270651 -1.2559317,-2.8270651 z\" />\n  <path\n     id=\"rect923-4\"\n     d=\"m 1.7432618,6.1376684 h 2.973912 L 7.691086,3.5537063 V 12.442643 L 4.7171738,9.8586803 h -2.973912 z\" />\n  <path\n     d=\"m 11.692328,2.6325515 -1.029116,1.266658 c 0,0 2.019893,1.685461 2.019893,4.068374 0,2.3829125 -2.180377,4.0510185 -2.180377,4.0510185 l 0.914042,1.304362 c 0,0 2.696115,-2.214777 2.696115,-5.3553805 0,-3.1406033 -2.420557,-5.335032 -2.420557,-5.335032 z\"\n     id=\"path996\" />\n</svg>";
 
-  var volumeMuteIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M9.75 11.51L6.7 9.5H3.75v-3H6.7L9.75 4.49v.664l.497.498V3.498L6.547 6H3.248v4h3.296l3.7 2.502v-2.154l-.497.5v.662zm3-5.165L12.404 6l-1.655 1.653L9.093 6l-.346.345L10.402 8 8.747 9.654l.346.347 1.655-1.653L12.403 10l.348-.346L11.097 8l1.655-1.655z\"/>\n</svg>";
+  var volumeMuteIcon = "<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   viewBox=\"0 0 16 16\">\n  <path\n     id=\"rect923-4\"\n     d=\"M 11.691406 2.6328125 L 10.664062 3.8984375 C 10.664062 3.8984375 12.683594 5.5838839 12.683594 7.9667969 C 12.683594 8.9473053 12.311476 9.7967054 11.876953 10.46875 L 10.644531 9.3808594 C 10.800909 8.9979199 10.916016 8.5478845 10.916016 8.0195312 C 10.916016 6.2189677 9.6601563 5.1933594 9.6601562 5.1933594 L 9.3007812 5.65625 L 9.3007812 8.1933594 L 7.6914062 6.7714844 L 7.6914062 3.5527344 L 5.8535156 5.1484375 L 3.0566406 2.6777344 L 2.0625 3.8027344 L 4.7050781 6.1367188 L 7.6914062 8.7753906 L 9.3007812 10.197266 L 9.8066406 10.642578 L 10.929688 11.634766 L 12.085938 12.65625 L 13.542969 13.943359 L 14.535156 12.818359 L 12.996094 11.458984 C 13.583469 10.544095 14.113281 9.3540668 14.113281 7.9667969 C 14.113281 4.8261936 11.691406 2.6328125 11.691406 2.6328125 z M 1.7441406 6.1367188 L 1.7441406 9.859375 L 4.7167969 9.859375 L 7.6914062 12.443359 L 7.6914062 10.216797 L 3.0722656 6.1367188 L 1.7441406 6.1367188 z \" />\n  <g\n     id=\"path2804\"\n     transform=\"translate(-0.494961,0.561213)\">\n    <path\n       d=\"M 2.5278811,3.6579925 14.007435,13.799257\"\n       id=\"path2808\" />\n  </g>\n  <g\n     id=\"g2816\"\n     transform=\"translate(0.03124978,-0.41807288)\">\n    <path\n       d=\"M 2.5278811,3.6579925 14.007435,13.799257\"\n       id=\"path2812\" />\n  </g>\n</svg>";
 
   var fullscreenIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M7.156 8L4 11.156V8.5H3V13h4.5v-1H4.844L8 8.844 7.156 8zM8.5 3v1h2.657L8 7.157 8.846 8 12 4.844V7.5h1V3H8.5z\"/>\n</svg>";
 
@@ -10786,9 +10796,14 @@
 
   var hdIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">\n  <path fill=\"#010101\" d=\"M5.375 7.062H2.637V4.26H.502v7.488h2.135V8.9h2.738v2.848h2.133V4.26H5.375v2.802zm5.97-2.81h-2.84v7.496h2.798c2.65 0 4.195-1.607 4.195-3.77v-.022c0-2.162-1.523-3.704-4.154-3.704zm2.06 3.758c0 1.21-.81 1.896-2.03 1.896h-.83V6.093h.83c1.22 0 2.03.696 2.03 1.896v.02z\"/>\n</svg>";
 
+  var PLAY_ICONS_PATHS = {
+    play: ['M 8,4.175 14.285937,8 V 8 L 8,11.825 Z', 'M 1.7343592,0.35 8,4.175 v 7.65 L 1.7343592,15.65 Z'],
+    pause: ['M 9.5745316,1.240614 14.287468,1.238904 V 14.761096 L 9.5745316,14.760614 Z', 'M 1.7125315,1.240614 6.375,1.2439291 V 14.756071 l -4.6624685,0.0045 z'],
+    stop: ['M 8,1.24 14.285937,1.23829 V 14.760482 L 8,14.76 Z', 'M 1.7110001,1.24 H 8 V 14.76 H 1.7110001 Z']
+  };
   var Config = Utils.Config,
       Fullscreen = Utils.Fullscreen,
-      formatTime = Utils.formatTime,
+      formatTime$1 = Utils.formatTime,
       extend = Utils.extend,
       removeArrayItem = Utils.removeArrayItem;
 
@@ -10796,6 +10811,51 @@
     _inherits(MediaControl, _UICorePlugin);
 
     var _super = _createSuper(MediaControl);
+
+    function MediaControl(core) {
+      var _this;
+
+      _classCallCheck(this, MediaControl);
+
+      _this = _super.call(this, core);
+      _this.persistConfig = _this.options.persistConfig;
+      _this.currentPositionValue = null;
+      _this.currentDurationValue = null;
+      _this.keepVisible = false;
+      _this.fullScreenOnVideoTagSupported = null; // unknown
+
+      _this.setInitialVolume();
+
+      _this.settings = {
+        left: ['play', 'stop', 'pause'],
+        right: ['volume'],
+        "default": ['position', 'seekbar', 'duration']
+      };
+      _this.kibo = new Kibo(_this.options.focusElement);
+
+      _this.bindKeyEvents();
+
+      if (_this.container) {
+        if (!zepto.isEmptyObject(_this.container.settings)) _this.settings = zepto.extend({}, _this.container.settings);
+      } else {
+        _this.settings = {};
+      }
+
+      _this.userDisabled = false;
+      if (_this.container && _this.container.mediaControlDisabled || _this.options.chromeless) _this.disable();
+
+      _this.stopDragHandler = function (event) {
+        return _this.stopDrag(event);
+      };
+
+      _this.updateDragHandler = function (event) {
+        return _this.updateDrag(event);
+      };
+
+      zepto(document).bind('mouseup', _this.stopDragHandler);
+      zepto(document).bind('mousemove', _this.updateDragHandler);
+      return _this;
+    }
 
     _createClass(MediaControl, [{
       key: "name",
@@ -10806,7 +10866,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -10872,54 +10932,7 @@
       get: function get() {
         return this.volume === 0;
       }
-    }]);
-
-    function MediaControl(core) {
-      var _this;
-
-      _classCallCheck(this, MediaControl);
-
-      _this = _super.call(this, core);
-      _this.persistConfig = _this.options.persistConfig;
-      _this.currentPositionValue = null;
-      _this.currentDurationValue = null;
-      _this.keepVisible = false;
-      _this.fullScreenOnVideoTagSupported = null; // unknown
-
-      _this.setInitialVolume();
-
-      _this.settings = {
-        left: ['play', 'stop', 'pause'],
-        right: ['volume'],
-        "default": ['position', 'seekbar', 'duration']
-      };
-      _this.kibo = new Kibo(_this.options.focusElement);
-
-      _this.bindKeyEvents();
-
-      if (_this.container) {
-        if (!zepto.isEmptyObject(_this.container.settings)) _this.settings = zepto.extend({}, _this.container.settings);
-      } else {
-        _this.settings = {};
-      }
-
-      _this.userDisabled = false;
-      if (_this.container && _this.container.mediaControlDisabled || _this.options.chromeless) _this.disable();
-
-      _this.stopDragHandler = function (event) {
-        return _this.stopDrag(event);
-      };
-
-      _this.updateDragHandler = function (event) {
-        return _this.updateDrag(event);
-      };
-
-      zepto(document).bind('mouseup', _this.stopDragHandler);
-      zepto(document).bind('mousemove', _this.updateDragHandler);
-      return _this;
-    }
-
-    _createClass(MediaControl, [{
+    }, {
       key: "getExternalInterface",
       value: function getExternalInterface() {
         var _this2 = this;
@@ -11005,7 +11018,7 @@
     }, {
       key: "setInitialVolume",
       value: function setInitialVolume() {
-        var initialVolume = this.persistConfig ? Config.restore('volume') : 100;
+        var initialVolume = Config.restore('volume');
         var options = this.container && this.container.options || this.options;
         this.setVolume(options.mute ? 0 : initialVolume, true);
       }
@@ -11031,16 +11044,16 @@
         // this will be called after a render
         if (!this.rendered) return; // update volume bar scrubber/fill on bar mode
 
-        this.$volumeBarContainer.find('.bar-fill-2').css({});
-        var containerWidth = this.$volumeBarContainer.width();
-        var barWidth = this.$volumeBarBackground.width();
+        this.$volumeBarContainer.find('.bar-fill-1').css({});
+        var containerWidth = this.$volumeBarContainer.height() - 20;
+        var barWidth = this.$volumeBarBackground.height();
         var offset = (containerWidth - barWidth) / 2.0;
         var pos = barWidth * this.volume / 100.0 + offset;
         this.$volumeBarFill.css({
           width: "".concat(this.volume, "%")
         });
         this.$volumeBarScrubber.css({
-          left: pos
+          left: pos + 10
         }); // update volume bar segments on segmented bar mode
 
         this.$volumeBarContainer.find('.segmented-bar-element').removeClass('fill');
@@ -11061,22 +11074,42 @@
     }, {
       key: "changeTogglePlay",
       value: function changeTogglePlay() {
-        this.$playPauseToggle.html('');
-        this.$playStopToggle.html('');
-
+        // this.$playPauseToggle.html('')
+        // this.$playStopToggle.html('')
         if (this.container && this.container.isPlaying()) {
-          this.$playPauseToggle.append(pauseIcon);
-          this.$playStopToggle.append(stopIcon);
+          this.animatePlayButton('play');
           this.trigger(Events.MEDIACONTROL_PLAYING);
         } else {
-          this.$playPauseToggle.append(playIcon);
-          this.$playStopToggle.append(playIcon);
+          this.animatePlayButton('pause');
           this.trigger(Events.MEDIACONTROL_NOTPLAYING);
           Browser.isMobile && this.show();
         }
 
         this.applyButtonStyle(this.$playPauseToggle);
         this.applyButtonStyle(this.$playStopToggle);
+      }
+    }, {
+      key: "animatePlayButton",
+      value: function animatePlayButton() {
+        var buttonType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'play';
+        if (!this.container) return;
+        var button = this.$playPauseToggle;
+
+        if (this.container.getPlaybackType() === Playback.LIVE) {
+          button = this.$playStopToggle;
+
+          if (buttonType !== 'play') {
+            buttonType = 'stop';
+          }
+        } else if (buttonType !== 'play') {
+          buttonType = 'pause';
+        }
+
+        var path1 = button.find('#path1')[0];
+        var path2 = button.find('#path2')[0];
+        if (!path1 || !path2) return;
+        path1.setAttribute('d', PLAY_ICONS_PATHS[buttonType][0]);
+        path2.setAttribute('d', PLAY_ICONS_PATHS[buttonType][1]);
       }
     }, {
       key: "mousemoveOnSeekBar",
@@ -11088,7 +11121,9 @@
           });
         }
 
-        this.trigger(Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
+        if (!this.draggingVolumeBar) {
+          this.trigger(Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
+        }
       }
     }, {
       key: "mouseleaveOnSeekBar",
@@ -11172,14 +11207,15 @@
     }, {
       key: "getVolumeFromUIEvent",
       value: function getVolumeFromUIEvent(event) {
-        var offsetY = event.pageX - this.$volumeBarContainer.offset().left;
-        var volumeFromUI = offsetY / this.$volumeBarContainer.width() * 100;
+        var offsetY = this.$volumeBarContainer.offset().top - 10 - event.pageY + this.$volumeBarContainer.height();
+        var volumeFromUI = offsetY / (this.$volumeBarContainer.height() - 10) * 100;
         return volumeFromUI;
       }
     }, {
       key: "toggleMute",
       value: function toggleMute() {
-        this.setVolume(this.muted ? 100 : 0);
+        console.log(this.intendedVolume);
+        this.setVolume(this.muted ? this.intendedVolume : 0);
       }
     }, {
       key: "setVolume",
@@ -11191,8 +11227,11 @@
         // it may not actually get set to this straight away
         // if the container is not ready etc
 
-        this.intendedVolume = value;
-        this.persistConfig && !isInitialVolume && Config.persist('volume', value);
+        if (value) {
+          this.intendedVolume = value;
+        }
+
+        !isInitialVolume && Config.persist('volume', value);
 
         var setWhenContainerReady = function setWhenContainerReady() {
           if (_this4.container && _this4.container.isReady) {
@@ -11234,7 +11273,11 @@
       key: "showVolumeBar",
       value: function showVolumeBar() {
         this.hideVolumeId && clearTimeout(this.hideVolumeId);
+        this.$el.find('.media-control-layer').addClass('hover-select');
+        this.updateVolumeUI();
         this.$volumeBarContainer.removeClass('volume-bar-hide');
+        this.$seekBarContainer.addClass('hide');
+        clearTimeout(this.seekBarVolumeTimeout);
       }
     }, {
       key: "hideVolumeBar",
@@ -11243,6 +11286,10 @@
 
         var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 400;
         if (!this.$volumeBarContainer) return;
+
+        if (!this.draggingVolumeBar) {
+          this.$el.find('.media-control-layer').removeClass('hover-select');
+        }
 
         if (this.draggingVolumeBar) {
           this.hideVolumeId = setTimeout(function () {
@@ -11253,6 +11300,12 @@
           this.hideVolumeId = setTimeout(function () {
             return _this5.$volumeBarContainer.addClass('volume-bar-hide');
           }, timeout);
+        }
+
+        if (!this.draggingVolumeBar) {
+          this.seekBarVolumeTimeout = setTimeout(function () {
+            _this5.$seekBarContainer.removeClass('hide');
+          }, 500);
         }
       }
     }, {
@@ -11289,8 +11342,8 @@
         this.currentSeekBarPercentage = 100;
         if (this.container && (this.container.getPlaybackType() !== Playback.LIVE || this.container.isDvrInUse())) this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
         this.setSeekPercentage(this.currentSeekBarPercentage);
-        var newPosition = formatTime(this.currentPositionValue);
-        var newDuration = formatTime(this.currentDurationValue);
+        var newPosition = formatTime$1(this.currentPositionValue);
+        var newDuration = formatTime$1(this.currentDurationValue);
 
         if (newPosition !== this.displayedPosition) {
           this.$position.text(newPosition);
@@ -11446,7 +11499,7 @@
         this.$volumeContainer = $layer.find('.drawer-container[data-volume]');
         this.$volumeIcon = $layer.find('.drawer-icon[data-volume]');
         this.$volumeBarBackground = this.$el.find('.bar-background[data-volume]');
-        this.$volumeBarFill = this.$el.find('.bar-fill-1[data-volume]');
+        this.$volumeBarFill = this.$el.find('.bar-fill-2[data-volume]');
         this.$volumeBarScrubber = this.$el.find('.bar-scrubber[data-volume]');
         this.$hdIndicator = this.$el.find('button.media-control-button[data-hd-indicator]');
         this.resetIndicators();
@@ -11604,7 +11657,11 @@
 
         var timeout = this.options.hideMediaControlDelay || 2000;
         this.settings && this.$el.html(this.template({
-          settings: this.settings
+          settings: {
+            "default": ['seekbar'],
+            left: ['playpause', 'volume', 'position', 'duration'],
+            right: ['fullscreen', 'hd-indicator']
+          }
         }));
         this.createCachedElements();
         this.$playPauseToggle.addClass('paused');
@@ -11660,13 +11717,30 @@
 
   var posterHTML = "<div class=\"play-wrapper\" data-poster></div>\n";
 
-  var css_248z$4 = ".player-poster[data-poster] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  z-index: 998;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: 50% 50%; }\n  .player-poster[data-poster].clickable {\n    cursor: pointer; }\n  .player-poster[data-poster]:hover .play-wrapper[data-poster] {\n    opacity: 1; }\n  .player-poster[data-poster] .play-wrapper[data-poster] {\n    width: 100%;\n    height: 25%;\n    margin: 0 auto;\n    opacity: 0.75;\n    transition: opacity 0.1s ease; }\n    .player-poster[data-poster] .play-wrapper[data-poster] svg {\n      height: 100%; }\n      .player-poster[data-poster] .play-wrapper[data-poster] svg path {\n        fill: #fff; }\n";
-  styleInject(css_248z$4);
+  var css_248z$3 = ".player-poster[data-poster] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  z-index: 998;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: 50% 50%; }\n  .player-poster[data-poster].clickable {\n    cursor: pointer; }\n  .player-poster[data-poster]:hover .play-wrapper[data-poster] {\n    opacity: 1; }\n  .player-poster[data-poster] .play-wrapper[data-poster] {\n    width: 100%;\n    height: 25%;\n    margin: 0 auto;\n    opacity: 0.75;\n    transition: opacity 0.1s ease; }\n    .player-poster[data-poster] .play-wrapper[data-poster] svg {\n      height: 100%; }\n      .player-poster[data-poster] .play-wrapper[data-poster] svg path {\n        fill: #fff; }\n";
+  styleInject(css_248z$3);
 
   var PosterPlugin = /*#__PURE__*/function (_UIContainerPlugin) {
     _inherits(PosterPlugin, _UIContainerPlugin);
 
     var _super = _createSuper(PosterPlugin);
+
+    function PosterPlugin(container) {
+      var _this;
+
+      _classCallCheck(this, PosterPlugin);
+
+      _this = _super.call(this, container);
+      _this.hasStartedPlaying = false;
+      _this.playRequested = false;
+
+      _this.render();
+
+      setTimeout(function () {
+        return _this.update();
+      }, 0);
+      return _this;
+    }
 
     _createClass(PosterPlugin, [{
       key: "name",
@@ -11677,7 +11751,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -11711,26 +11785,7 @@
       get: function get() {
         return !this.options.poster || this.options.poster.showOnVideoEnd || this.options.poster.showOnVideoEnd === undefined;
       }
-    }]);
-
-    function PosterPlugin(container) {
-      var _this;
-
-      _classCallCheck(this, PosterPlugin);
-
-      _this = _super.call(this, container);
-      _this.hasStartedPlaying = false;
-      _this.playRequested = false;
-
-      _this.render();
-
-      setTimeout(function () {
-        return _this.update();
-      }, 0);
-      return _this;
-    }
-
-    _createClass(PosterPlugin, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.container, Events.CONTAINER_STOP, this.onStop);
@@ -11878,15 +11933,34 @@
 
   var seekTimeHTML = "<span data-seek-time></span>\n<span data-duration></span>\n";
 
-  var css_248z$5 = ".seek-time[data-seek-time] {\n  position: absolute;\n  white-space: nowrap;\n  height: 20px;\n  line-height: 20px;\n  font-size: 0;\n  left: -100%;\n  bottom: 55px;\n  background-color: rgba(2, 2, 2, 0.5);\n  z-index: 9999;\n  transition: opacity 0.1s ease; }\n  .seek-time[data-seek-time].hidden[data-seek-time] {\n    opacity: 0; }\n  .seek-time[data-seek-time] [data-seek-time] {\n    display: inline-block;\n    color: white;\n    font-size: 10px;\n    padding-left: 7px;\n    padding-right: 7px;\n    vertical-align: top; }\n  .seek-time[data-seek-time] [data-duration] {\n    display: inline-block;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 10px;\n    padding-right: 7px;\n    vertical-align: top; }\n    .seek-time[data-seek-time] [data-duration]:before {\n      content: \"|\";\n      margin-right: 7px; }\n";
-  styleInject(css_248z$5);
+  var css_248z$2 = ".seek-time[data-seek-time] {\n  position: absolute;\n  white-space: nowrap;\n  height: 20px;\n  line-height: 20px;\n  font-weight: 600;\n  left: -100%;\n  bottom: 55px;\n  background-color: rgba(2, 2, 2, 0);\n  z-index: 9999;\n  transition: opacity 0.1s ease;\n  letter-spacing: 1px; }\n  .seek-time[data-seek-time].hidden[data-seek-time] {\n    opacity: 0; }\n  .seek-time[data-seek-time] [data-seek-time] {\n    display: inline-block;\n    color: white;\n    font-size: 12px;\n    padding-left: 7px;\n    padding-right: 7px;\n    vertical-align: top;\n    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }\n  .seek-time[data-seek-time] [data-duration] {\n    display: inline-block;\n    color: rgba(255, 255, 255, 0.5);\n    font-size: 10px;\n    padding-right: 7px;\n    vertical-align: top; }\n    .seek-time[data-seek-time] [data-duration]:before {\n      content: \"|\";\n      margin-right: 7px; }\n";
+  styleInject(css_248z$2);
 
-  var formatTime$1 = Utils.formatTime;
+  var formatTime = Utils.formatTime;
 
   var SeekTime$1 = /*#__PURE__*/function (_UICorePlugin) {
     _inherits(SeekTime, _UICorePlugin);
 
     var _super = _createSuper(SeekTime);
+
+    function SeekTime(core) {
+      var _this;
+
+      _classCallCheck(this, SeekTime);
+
+      _this = _super.call(this, core);
+      _this.hoveringOverSeekBar = false;
+      _this.hoverPosition = null;
+      _this.duration = null;
+      _this.firstFragDateTime = null;
+      _this.actualLiveTime = !!_this.mediaControl.options.actualLiveTime;
+
+      if (_this.actualLiveTime) {
+        if (_this.mediaControl.options.actualLiveServerTime) _this.actualLiveServerTimeDiff = new Date().getTime() - new Date(_this.mediaControl.options.actualLiveServerTime).getTime();else _this.actualLiveServerTimeDiff = 0;
+      }
+
+      return _this;
+    }
 
     _createClass(SeekTime, [{
       key: "name",
@@ -11897,7 +11971,7 @@
       key: "supportedVersion",
       get: function get() {
         return {
-          min: "0.4.19"
+          min: "0.4.20"
         };
       }
     }, {
@@ -11938,28 +12012,7 @@
       get: function get() {
         return this.actualLiveTime && this.isLiveStreamWithDvr;
       }
-    }]);
-
-    function SeekTime(core) {
-      var _this;
-
-      _classCallCheck(this, SeekTime);
-
-      _this = _super.call(this, core);
-      _this.hoveringOverSeekBar = false;
-      _this.hoverPosition = null;
-      _this.duration = null;
-      _this.firstFragDateTime = null;
-      _this.actualLiveTime = !!_this.mediaControl.options.actualLiveTime;
-
-      if (_this.actualLiveTime) {
-        if (_this.mediaControl.options.actualLiveServerTime) _this.actualLiveServerTimeDiff = new Date().getTime() - new Date(_this.mediaControl.options.actualLiveServerTime).getTime();else _this.actualLiveServerTimeDiff = 0;
-      }
-
-      return _this;
-    }
-
-    _createClass(SeekTime, [{
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
@@ -12046,7 +12099,7 @@
           this.$el.css('left', '-100%');
         } else {
           var seekTime = this.getSeekTime();
-          var currentSeekTime = formatTime$1(seekTime.seekTime, this.useActualLiveTime); // only update dom if necessary, ie time actually changed
+          var currentSeekTime = formatTime(seekTime.seekTime, this.useActualLiveTime); // only update dom if necessary, ie time actually changed
 
           if (currentSeekTime !== this.displayedSeekTime) {
             this.$seekTimeEl.text(currentSeekTime);
@@ -12055,7 +12108,7 @@
 
           if (this.durationShown) {
             this.$durationEl.show();
-            var currentDuration = formatTime$1(this.actualLiveTime ? seekTime.secondsSinceMidnight : this.duration, this.actualLiveTime);
+            var currentDuration = formatTime(this.actualLiveTime ? seekTime.secondsSinceMidnight : this.duration, this.actualLiveTime);
 
             if (currentDuration !== this.displayedDuration) {
               this.$durationEl.text(currentDuration);
@@ -12101,35 +12154,13 @@
 
   var spinnerHTML = "<div data-bounce1></div><div data-bounce2></div><div data-bounce3></div>\n";
 
-  var css_248z$6 = ".spinner-three-bounce[data-spinner] {\n  position: absolute;\n  margin: 0 auto;\n  width: 70px;\n  text-align: center;\n  z-index: 999;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  /* center vertically */\n  top: 50%;\n  transform: translateY(-50%); }\n  .spinner-three-bounce[data-spinner] > div {\n    width: 18px;\n    height: 18px;\n    background-color: #FFFFFF;\n    border-radius: 100%;\n    display: inline-block;\n    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;\n            animation: bouncedelay 1.4s infinite ease-in-out;\n    /* Prevent first frame from flickering when animation starts */\n    -webkit-animation-fill-mode: both;\n            animation-fill-mode: both; }\n  .spinner-three-bounce[data-spinner] [data-bounce1] {\n    -webkit-animation-delay: -0.32s;\n            animation-delay: -0.32s; }\n  .spinner-three-bounce[data-spinner] [data-bounce2] {\n    -webkit-animation-delay: -0.16s;\n            animation-delay: -0.16s; }\n\n@-webkit-keyframes bouncedelay {\n  0%, 80%, 100% {\n    transform: scale(0); }\n  40% {\n    transform: scale(1); } }\n\n@keyframes bouncedelay {\n  0%, 80%, 100% {\n    transform: scale(0); }\n  40% {\n    transform: scale(1); } }\n";
-  styleInject(css_248z$6);
+  var css_248z$1 = ".spinner-three-bounce[data-spinner] {\n  position: absolute;\n  margin: 0 auto;\n  width: 70px;\n  text-align: center;\n  z-index: 999;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  /* center vertically */\n  top: 50%;\n  transform: translateY(-50%); }\n  .spinner-three-bounce[data-spinner] > div {\n    width: 18px;\n    height: 18px;\n    background-color: #FFFFFF;\n    border-radius: 100%;\n    display: inline-block;\n    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;\n            animation: bouncedelay 1.4s infinite ease-in-out;\n    /* Prevent first frame from flickering when animation starts */\n    -webkit-animation-fill-mode: both;\n            animation-fill-mode: both; }\n  .spinner-three-bounce[data-spinner] [data-bounce1] {\n    -webkit-animation-delay: -0.32s;\n            animation-delay: -0.32s; }\n  .spinner-three-bounce[data-spinner] [data-bounce2] {\n    -webkit-animation-delay: -0.16s;\n            animation-delay: -0.16s; }\n\n@-webkit-keyframes bouncedelay {\n  0%, 80%, 100% {\n    transform: scale(0); }\n  40% {\n    transform: scale(1); } }\n\n@keyframes bouncedelay {\n  0%, 80%, 100% {\n    transform: scale(0); }\n  40% {\n    transform: scale(1); } }\n";
+  styleInject(css_248z$1);
 
   var SpinnerThreeBouncePlugin = /*#__PURE__*/function (_UIContainerPlugin) {
     _inherits(SpinnerThreeBouncePlugin, _UIContainerPlugin);
 
     var _super = _createSuper(SpinnerThreeBouncePlugin);
-
-    _createClass(SpinnerThreeBouncePlugin, [{
-      key: "name",
-      get: function get() {
-        return 'spinner';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
-    }, {
-      key: "attributes",
-      get: function get() {
-        return {
-          'data-spinner': '',
-          'class': 'spinner-three-bounce'
-        };
-      }
-    }]);
 
     function SpinnerThreeBouncePlugin(container) {
       var _this;
@@ -12156,6 +12187,26 @@
     }
 
     _createClass(SpinnerThreeBouncePlugin, [{
+      key: "name",
+      get: function get() {
+        return 'spinner';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
+      key: "attributes",
+      get: function get() {
+        return {
+          'data-spinner': '',
+          'class': 'spinner-three-bounce'
+        };
+      }
+    }, {
       key: "onBuffering",
       value: function onBuffering() {
         this.show();
@@ -12208,20 +12259,6 @@
 
     var _super = _createSuper(StatsPlugin);
 
-    _createClass(StatsPlugin, [{
-      key: "name",
-      get: function get() {
-        return 'stats';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
-    }]);
-
     function StatsPlugin(container) {
       var _this;
 
@@ -12237,6 +12274,18 @@
     }
 
     _createClass(StatsPlugin, [{
+      key: "name",
+      get: function get() {
+        return 'stats';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.container.playback, Events.PLAYBACK_PLAY, this.onPlay);
@@ -12340,8 +12389,8 @@
 
   var watermarkHTML = "<div class=\"clappr-watermark\" data-watermark data-watermark-<%=position %>\n  style=\"opacity:<%=opacity %>; transform: translate(<%=nudge.x %>px, <%=nudge.y %>px)\">\n<% if(typeof imageLink !== 'undefined') { %>\n<a target=\"_blank\" href=\"<%= imageLink %>\" onclick=\"(event) => event.stopPropagation();\">\n<% } %>\n<img src=\"<%= imageUrl %>\">\n<% if(typeof imageLink !== 'undefined') { %>\n</a>\n<% } %>\n</div>\n";
 
-  var css_248z$7 = ".clappr-watermark[data-watermark] {\n  position: absolute;\n  min-width: 70px;\n  max-width: 200px;\n  width: 12%;\n  text-align: center;\n  z-index: 10;\n  transition: transform .2s ease, opacity .4s ease; }\n\n.clappr-watermark[data-watermark] a {\n  outline: none;\n  cursor: pointer; }\n\n.clappr-watermark[data-watermark] img {\n  max-width: 100%; }\n\n.clappr-watermark[data-watermark-bottom-left] {\n  bottom: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-bottom-right] {\n  bottom: 10px;\n  right: 42px; }\n\n.clappr-watermark[data-watermark-top-left] {\n  top: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-top-right] {\n  top: 10px;\n  right: 37px; }\n";
-  styleInject(css_248z$7);
+  var css_248z = ".clappr-watermark[data-watermark] {\n  position: absolute;\n  min-width: 70px;\n  max-width: 200px;\n  width: 12%;\n  text-align: center;\n  z-index: 10;\n  transition: transform .2s ease, opacity .4s ease; }\n\n.clappr-watermark[data-watermark] a {\n  outline: none;\n  cursor: pointer; }\n\n.clappr-watermark[data-watermark] img {\n  max-width: 100%; }\n\n.clappr-watermark[data-watermark-bottom-left] {\n  bottom: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-bottom-right] {\n  bottom: 10px;\n  right: 42px; }\n\n.clappr-watermark[data-watermark-top-left] {\n  top: 10px;\n  left: 10px; }\n\n.clappr-watermark[data-watermark-top-right] {\n  top: 10px;\n  right: 37px; }\n";
+  styleInject(css_248z);
 
   var OPTIONS_DEFAULT = {
     position: 'bottom-right',
@@ -12365,25 +12414,6 @@
 
     var _super = _createSuper(WaterMarkPlugin);
 
-    _createClass(WaterMarkPlugin, [{
-      key: "name",
-      get: function get() {
-        return 'watermark';
-      }
-    }, {
-      key: "supportedVersion",
-      get: function get() {
-        return {
-          min: "0.4.19"
-        };
-      }
-    }, {
-      key: "template",
-      get: function get() {
-        return tmpl(watermarkHTML);
-      }
-    }]);
-
     function WaterMarkPlugin(container) {
       var _this;
 
@@ -12397,6 +12427,23 @@
     }
 
     _createClass(WaterMarkPlugin, [{
+      key: "name",
+      get: function get() {
+        return 'watermark';
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.20"
+        };
+      }
+    }, {
+      key: "template",
+      get: function get() {
+        return tmpl(watermarkHTML);
+      }
+    }, {
       key: "bindEvents",
       value: function bindEvents() {
         this.listenTo(this.container, Events.CONTAINER_PLAY, this.onPlay);
@@ -12462,20 +12509,17 @@
     }, {
       key: "executeBehavior",
       value: function executeBehavior() {
-        if (!this.behavior.includes('fixed')) {
+        if (this.behavior && !this.behavior.includes('fixed')) {
           var nudge = {
             x: this.onControls.x + this.nudge.x,
             y: this.onControls.y + this.nudge.y
           };
           var transformedNudge = this.nudgeTransform(nudge);
           this.$el.find('.clappr-watermark')[0].style.transform = "translate(".concat(transformedNudge.x, "px, ").concat(transformedNudge.y, "px)");
-
-          if (!this.behavior.includes('fixed')) {
-            this.$el.find('.clappr-watermark')[0].style.zIndex = 100000;
-          }
+          this.$el.find('.clappr-watermark')[0].style.zIndex = 100000;
         }
 
-        if (this.behavior.includes('discrete') && this.timeout) {
+        if (this.behavior && this.behavior.includes('discrete') && this.timeout) {
           this.$el.find('.clappr-watermark')[0].style.opacity = this.opacity;
           clearTimeout(this.timeout);
         }
@@ -12485,12 +12529,12 @@
       value: function resetBehavior() {
         var _this2 = this;
 
-        if (!this.behavior.includes('fixed')) {
+        if (this.behavior && !this.behavior.includes('fixed')) {
           var transformedNudge = this.nudgeTransform(this.nudge);
           this.$el.find('.clappr-watermark')[0].style.transform = "translate(".concat(transformedNudge.x, "px, ").concat(transformedNudge.y, "px)");
         }
 
-        if (this.behavior.includes('discrete')) {
+        if (this.behavior && this.behavior.includes('discrete')) {
           this.timeout = setTimeout(function () {
             if (!_this2.paused) {
               _this2.$el.find('.clappr-watermark')[0].style.opacity = _this2.discreteOpacity;
@@ -12550,7 +12594,7 @@
     WaterMark: WaterMarkPlugin
   };
 
-  var version = "0.4.4";
+  var version = "0.4.6";
 
   for (var _i = 0, _Object$values = Object.values(Plugins); _i < _Object$values.length; _i++) {
     var plugin = _Object$values[_i];
