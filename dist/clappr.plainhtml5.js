@@ -10818,7 +10818,7 @@
       _classCallCheck(this, MediaControl);
 
       _this = _super.call(this, core);
-      _this.persistConfig = _this.options.persistConfig;
+      _this.persistConfig = true;
       _this.currentPositionValue = null;
       _this.currentDurationValue = null;
       _this.keepVisible = false;
@@ -11148,7 +11148,7 @@
         this.$fullscreenToggle.append(icon);
         this.applyButtonStyle(this.$fullscreenToggle);
         this.$el.find('.media-control').length !== 0 && this.$el.removeClass('w320');
-        if (size.width <= 320 || this.options.hideVolumeBar) this.$el.addClass('w320');
+        this.$el.addClass('w320');
       }
     }, {
       key: "togglePlayPause",
@@ -12594,7 +12594,7 @@
     WaterMark: WaterMarkPlugin
   };
 
-  var version = "0.4.6";
+  var version = "0.4.7";
 
   for (var _i = 0, _Object$values = Object.values(Plugins); _i < _Object$values.length; _i++) {
     var plugin = _Object$values[_i];
