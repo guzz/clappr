@@ -930,9 +930,9 @@
   integrity sha512-S9DEHcykUlelWm1+VsQpEVlRCmuyuqG9Nh5g1GJTEdr0d0mcTrpswIKq7qDDdz80S9JKRIBR6Bi5mawJow3IMg==
 
 "@guzzj/clappr-plugins@^0.4.12":
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/@guzzj/clappr-plugins/-/clappr-plugins-0.4.14.tgz#7ae3c735cb91caacc9411447421e8dab52142765"
-  integrity sha512-zNWZ0cHCFiWpiz7f0UVWh8cwb4V69TrA6eDTP/A9e+rJ8v8wjmvxPXxjvAbmsW5dipZaWIbLjwnxGfVYAUjC+g==
+  version "0.4.15"
+  resolved "https://registry.yarnpkg.com/@guzzj/clappr-plugins/-/clappr-plugins-0.4.15.tgz#16d9f53f239f39a56885da7a22d0b8d86e30ddb9"
+  integrity sha512-wOjlitO6h5Ja+t117eUhJn6jjfj04wLEP67mXYRiMoDkJDLDeMJpa6RpcAPrh27E7pqZbOd68FLV0bHeBWvZoA==
 
 "@guzzj/hlsjs-playback@^0.5.4":
   version "0.5.6"
